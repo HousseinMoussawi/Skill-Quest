@@ -1,8 +1,5 @@
-import React from "react";
-import { Auth, googlePovider } from "../../config/firebase-config";
-import { signInWithPopup } from "firebase/auth";
-import { useState } from "react";
-
+import React,{ useState }from "react";
+import { LoginWithGoogle } from "../login-with-google";
 
 type Props = {
   title: string;
@@ -11,15 +8,6 @@ type Props = {
 const Login = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-
-  const loginWithGoogle= async ()=>{
-    try{
-        await signInWithPopup(Auth,googlePovider)
-    } catch (err){
-        console.log(err)
-    }
-  }
 
   const login = async () => {
     
@@ -51,7 +39,7 @@ const Login = (props: Props) => {
         don't have an account? <span>Sign up</span>
       </h2>
       <h2>------------------Or------------------</h2>
-      <button onClick={loginWithGoogle}>Login with google</button>
+      <LoginWithGoogle/>
     </div>
   );
 };
