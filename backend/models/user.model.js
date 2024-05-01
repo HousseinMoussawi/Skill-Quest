@@ -38,11 +38,11 @@ const gameStatSchema = new mongoose.Schema({
 
 const userGameSchema = new mongoose.Schema({
   game_name: String,
-  stats:{
+  game_stats:{
     type: [gameStatSchema],
     default: [],
   },
-  levels:{
+  game_levels:{
     type: [gameLevelSchema],
     default:[],
   }
@@ -68,7 +68,7 @@ const achievementSchema = new mongoose.Schema({
   achievement_name: String,
   achievement_description: String,
   achievement_medal_url: String,
-  game:{
+  achievement_game:{
     type: gameSchema,
   }
 });
@@ -112,17 +112,17 @@ const userSchema = new mongoose.Schema(
       default: USER_ROLES.PLAYER,
     },
 
-    achievements: {
+    user_achievements: {
       type: [achievementSchema],
       default:[],
     },
 
-    rewards:{
+    user_rewards:{
       type: [rewardSchema],
       default:[]
     },
 
-    games:{
+    user_games:{
       type: [userGameSchema],
       default: [],
     },
