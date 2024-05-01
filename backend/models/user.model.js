@@ -14,7 +14,7 @@ const levelStatSchema = new mongoose.Schema({
 const gameLevelSchema = new mongoose.Schema({
   level_id: mongoose.Schema.Types.ObjectId,
   level_name: String,
-  
+
   level_difficulty:{
     type: String,
     enum:[LEVEL_DIFFICULTY.BEGINNER,LEVEL_DIFFICULTY.INTERMEDIATE,LEVEL_DIFFICULTY.ADVANCED,LEVEL_DIFFICULTY.PROFESSIONAL],
@@ -132,6 +132,11 @@ const userSchema = new mongoose.Schema(
     user_games:{
       type: [userGameSchema],
       default: [],
+    },
+
+    balance:{
+      type: Number,
+      default: 0,
     },
   },
   {
