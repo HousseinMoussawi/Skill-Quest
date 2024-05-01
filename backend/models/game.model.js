@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Level = require('./level.model')
+const GameStat = require('./gameStat.model')
 
 const creatorSchema = new mongoose.Schema({
     creator_id: mongoose.Schema.Types.ObjectId,
@@ -32,7 +33,7 @@ const gameSchema = new mongoose.Schema(
         creator:{
             type: creatorSchema,
             default:{
-                creator_id:1,
+                creator_id: 1,
                 creator_username: 'Official',
                 creator_picture_url: '',
             }
@@ -40,7 +41,12 @@ const gameSchema = new mongoose.Schema(
 
         levels:{
             type: [Level.levelSchema],
-        }
+        },
+
+        stats:{
+            type: [GameStat.gameStatSchema],
+            default: [],
+        },
     },
     {
         timestamps: true
