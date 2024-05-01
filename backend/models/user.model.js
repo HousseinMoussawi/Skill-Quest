@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
-const REWARD_TYPES = require('../utils/REWARD_TYPES_ENUM')
+const REWARD_TYPES = require('../utils/REWARD_TYPES_ENUM');
+const LEVEL_DIFFICULTY = require('../utils/LEVEL_DIFFICULTY_ENUM');
 
 const levelStatSchema = new mongoose.Schema({
   level_stat_id: mongoose.Schema.Types.ObjectId,
