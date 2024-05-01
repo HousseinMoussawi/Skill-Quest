@@ -3,6 +3,7 @@ const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
 const REWARD_TYPES = require('../utils/REWARD_TYPES_ENUM');
 const LEVEL_DIFFICULTY = require('../utils/LEVEL_DIFFICULTY_ENUM');
+const LEVEL_STATUS = require('../utils/LEVEL_STATUS_ENUM')
 
 const levelStatSchema = new mongoose.Schema({
   level_stat_id: mongoose.Schema.Types.ObjectId,
@@ -20,8 +21,8 @@ const gameLevelSchema = new mongoose.Schema({
   },
   level_status: {
     type: String,
-    enum:[LEVEL_STATS.COMPLETE,LEVEL_STATS.UNLOCKED,LEVEL_STATS.LOCKED],
-    default: LEVEL_STATS.UNLOCKED,
+    enum:[LEVEL_STATUS.COMPLETE,LEVEL_STATUS.UNLOCKED,LEVEL_STATUS.LOCKED],
+    default: LEVEL_STATUS.UNLOCKED,
   },
   level_stats:{
     type:[levelStatSchema],
