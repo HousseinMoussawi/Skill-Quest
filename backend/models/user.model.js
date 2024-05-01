@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
+const Achievement = require('./achievement.model')
+
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -32,12 +34,34 @@ const userSchema = new mongoose.Schema({
 
   profilePictureURL:{
     type:String,
-    
+
   },
 
   role:{
     type: String,
     enum: [USER_ROLES.ADMIN,USER_ROLES.CREATOR,USER_ROLES.PLAYER],
     default: USER_ROLES.PLAYER,
+  },
+
+  achivements:{
+    type:[Achievement.schema]
   }
+},
+{
+    timestamps: true,
 });
+
+
+userSchema.pre("save", async function (next) {
+    if (this.isModified("password")) {
+      this.password = await bcrypt.hash(this.password, 10);
+    }
+    return next();
+  });
+  
+  userSchema.methods.comparePassword = function (password) {
+    return bcrypt.compare(password, this.password);
+  };
+  const User = mongoose.model("User", userSchema);
+  
+  module.exports = { User, userSchema };
