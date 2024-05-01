@@ -3,21 +3,35 @@ const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
 const REWARD_TYPES = require('../utils/REWARD_TYPES_ENUM')
 
-
-const gameStatSchema = new mongoose.Schema({
-  game_stat_id: mongoose.Schema.types.ObjectId,
+const levelStatSchema = new mongoose.Schema({
+  level_stat_id: mongoose.Schema.Types.ObjectId,
   stat_name: String,
   stat_value: String,
 })
 
-const rewardSchema = new mongoose.Schema({
-  reward_id: mongoose.Schema.types.ObjectId,
-  reward_name: String,
-  reward_image_url: String,
-  reward_type: {
+const gameLevelSchema = new mongoose.Schema({
+  level_id: mongoose.Schema.Types.ObjectId,
+  level_name: String,
+  level_difficulty:{
     type: String,
-    enum: [REWARD_TYPES.THEME,REWARD_TYPES.BACKGROUND,REWARD_TYPES.EMOJI]
-  }
+    enum:[LEVEL_DIFFICULTY.BEGINNER,LEVEL_DIFFICULTY.INTERMEDIATE,LEVEL_DIFFICULTY.ADVANCED,LEVEL_DIFFICULTY.PROFESSIONAL],
+    default: LEVEL_DIFFICULTY.BEGINNER,
+  },
+  level_status: {
+    type: String,
+    enum:[LEVEL_STATS.COMPLETE,LEVEL_STATS.UNLOCKED,LEVEL_STATS.LOCKED],
+    default: LEVEL_STATS.UNLOCKED,
+  },
+  level_stats:{
+    type:[levelStatSchema],
+    default:[],
+  },
+})
+
+const gameStatSchema = new mongoose.Schema({
+  game_stat_id: mongoose.Schema.Types.ObjectId,
+  stat_name: String,
+  stat_value: String,
 })
 
 const userGameSchema = new mongoose.Schema({
@@ -26,15 +40,29 @@ const userGameSchema = new mongoose.Schema({
     type: [gameStatSchema],
     default: [],
   },
+  levels:{
+    type: [gameLevelSchema],
+    default:[],
+  }
+})
+
+const rewardSchema = new mongoose.Schema({
+  reward_id: mongoose.Schema.Types.ObjectId,
+  reward_name: String,
+  reward_image_url: String,
+  reward_type: {
+    type: String,
+    enum: [REWARD_TYPES.THEME,REWARD_TYPES.BACKGROUND,REWARD_TYPES.EMOJI]
+  }
 })
 
 const gameSchema = new mongoose.Schema({
-  game_id: mongoose.Schema.types.ObjectId,
+  game_id: mongoose.Schema.Types.ObjectId,
   game_name: String,
 })
 
 const achievementSchema = new mongoose.Schema({
-  achievement_id: mongoose.Schema.types.ObjectId,
+  achievement_id: mongoose.Schema.Types.ObjectId,
   achievement_name: String,
   achievement_description: String,
   achievement_medal_url: String,
