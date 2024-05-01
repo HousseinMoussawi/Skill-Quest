@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const LEVEL_DIFFICULTY = require("../utils/LEVEL_DIFFICULTY_ENUM");
 const LEVEL_STATUS = require("../utils/LEVEL_STATUS_ENUM");
-const levelStat = require('./levelStats')
+const levelStat = require("./levelStats");
 
 const levelSchema = new mongoose.Schema({
   name: {
@@ -31,9 +31,11 @@ const levelSchema = new mongoose.Schema({
     default: LEVEL_STATUS.UNLOCKED,
   },
 
-  stats:{
-    type: [levelStat.levelStatSchema]
-  }
+  stats: {
+    type: [levelStat.levelStatSchema],
+  },
+
+  reward: Number,
 });
 
 const Level = mongoose.model("Level", levelSchema);
