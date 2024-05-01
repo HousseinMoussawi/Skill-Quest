@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
-const creator = require('./user.model')
 
+const creatorSchema = new mongoose.Schema({
+    creator_id: mongoose.Schema.Types.ObjectId,
+    creator_username: String,
+    creator_picture_url: String,
+})
 
 const gameSchema = new mongoose.Schema(
     {
@@ -25,8 +29,12 @@ const gameSchema = new mongoose.Schema(
         },
 
         creator:{
-            creator_id: mongoose.Schema.Types.ObjectId,
-            creator_picture_url: String,
+            type: creatorSchema,
+            default:{
+                creator_id:1,
+                creator_username: 'Official',
+                creator_picture_url: '',
+            }
         },
     },
     {

@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
 const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
-const Achievement = require('./achievement.model')
 
+const achievementSchema = new mongoose.Schema({
+  achievement_id
+  achievement_name: String,
+  achievement_description: String,
+  achievement_medal_url: String,
+})
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -43,8 +48,8 @@ const userSchema = new mongoose.Schema({
     default: USER_ROLES.PLAYER,
   },
 
-  achivements:{
-    type:[Achievement.schema]
+  achievements:{
+    type:[achievementSchema]
   }
 },
 {
