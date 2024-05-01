@@ -1,0 +1,7 @@
+const REWARD_TYPES = {
+  THEME: "THEME",
+  BACKGROUND: "BACKGROUND",
+  EMOJI: "EMOJI",
+};
+
+module.exports = REWARD_TYPES;
