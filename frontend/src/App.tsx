@@ -1,5 +1,5 @@
 import './styles/App.css';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Creators from './pages/creators';
 import Admin from './pages/admin';
 import Home from './pages/home';
