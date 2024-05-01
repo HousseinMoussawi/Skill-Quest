@@ -1,7 +1,14 @@
 const mongoose = require("mongoose");
 const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
+const REWARD_TYPES = require('../utils/REWARD_TYPES_ENUM')
 
+
+const gameStatSchema = new mongoose.Schema({
+  game_stat_id: mongoose.Schema.types.ObjectId,
+  stat_name: String,
+  stat_value: String,
+})
 
 const rewardSchema = new mongoose.Schema({
   reward_id: mongoose.Schema.types.ObjectId,
@@ -9,8 +16,16 @@ const rewardSchema = new mongoose.Schema({
   reward_image_url: String,
   reward_type: {
     type: String,
-    enum: [REWARD_TYPES.THEME,REWARD_TYPES.BACKGROUND,REWARD_TYPES.EMOTE]
+    enum: [REWARD_TYPES.THEME,REWARD_TYPES.BACKGROUND,REWARD_TYPES.EMOJI]
   }
+})
+
+const userGameSchema = new mongoose.Schema({
+  game_name: String,
+  stats:{
+    type: [gameStatSchema],
+    default: [],
+  },
 })
 
 const gameSchema = new mongoose.Schema({
@@ -75,7 +90,12 @@ const userSchema = new mongoose.Schema(
     rewards:{
       type: [rewardSchema],
       default:[]
-    }
+    },
+
+    games:{
+      type: [userGameSchema],
+      default: [],
+    },
   },
   {
     timestamps: true,
