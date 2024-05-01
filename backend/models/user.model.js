@@ -2,11 +2,20 @@ const mongoose = require("mongoose");
 const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
 
+
+const gameSchema = new mongoose.Schema({
+  game_id: mongoose.Schema.types.ObjectId,
+  game_name: String,
+})
+
 const achievementSchema = new mongoose.Schema({
   achievement_id: mongoose.Schema.types.ObjectId,
   achievement_name: String,
   achievement_description: String,
   achievement_medal_url: String,
+  game:{
+    type: gameSchema,
+  }
 });
 
 const userSchema = new mongoose.Schema(
