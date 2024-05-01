@@ -26,4 +26,4 @@ const rewardSchema = new mongoose.Schema({
 
 const Reward = mongoose.model('Reward',rewardSchema)
 
-module.exports = (Reward, rewardSchema)
+module.exports = {Reward, rewardSchema}

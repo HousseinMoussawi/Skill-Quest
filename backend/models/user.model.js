@@ -14,16 +14,19 @@ const levelStatSchema = new mongoose.Schema({
 const gameLevelSchema = new mongoose.Schema({
   level_id: mongoose.Schema.Types.ObjectId,
   level_name: String,
+  
   level_difficulty:{
     type: String,
     enum:[LEVEL_DIFFICULTY.BEGINNER,LEVEL_DIFFICULTY.INTERMEDIATE,LEVEL_DIFFICULTY.ADVANCED,LEVEL_DIFFICULTY.PROFESSIONAL],
     default: LEVEL_DIFFICULTY.BEGINNER,
   },
+
   level_status: {
     type: String,
     enum:[LEVEL_STATUS.COMPLETE,LEVEL_STATUS.UNLOCKED,LEVEL_STATUS.LOCKED],
     default: LEVEL_STATUS.UNLOCKED,
   },
+
   level_stats:{
     type:[levelStatSchema],
     default:[],
@@ -38,6 +41,7 @@ const gameStatSchema = new mongoose.Schema({
 
 const userGameSchema = new mongoose.Schema({
   game_name: String,
+
   game_stats:{
     type: [gameStatSchema],
     default: [],
@@ -52,6 +56,7 @@ const rewardSchema = new mongoose.Schema({
   reward_id: mongoose.Schema.Types.ObjectId,
   reward_name: String,
   reward_image_url: String,
+
   reward_type: {
     type: String,
     enum: [REWARD_TYPES.THEME,REWARD_TYPES.BACKGROUND,REWARD_TYPES.EMOJI]
@@ -68,6 +73,7 @@ const achievementSchema = new mongoose.Schema({
   achievement_name: String,
   achievement_description: String,
   achievement_medal_url: String,
+
   achievement_game:{
     type: gameSchema,
   }
@@ -77,6 +83,7 @@ const userSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
+
       validate: {
         validator: function (value) {
           return /\w+\s+\w+/.test(value);
