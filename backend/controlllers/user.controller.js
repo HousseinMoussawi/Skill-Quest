@@ -20,3 +20,26 @@ const getUserById = (req, res) => {
   }
 };
 
+const updateUserById = (req, res) => {
+  const { id } = req.params;
+  const { email, fullName, favoriteGame, username, skills, profilePictureURL } =
+    req.body;
+
+  try {
+    const updatedUser = User.findByIdAndUpdate(
+      id,
+      {
+        email,
+        fullName,
+        favoriteGame,
+        username,
+        skills,
+        profilePictureURL,
+      },
+      { new: true }
+    );
+    return res.json(updatedUser);
+  } catch (e) {
+    return res.status(500).send("Internal serve error!:", e);
+  }
+};

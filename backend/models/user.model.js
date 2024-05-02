@@ -143,11 +143,11 @@ const userSchema = new mongoose.Schema(
       default: [],
     },
 
-    favorite_game: {
+    favoriteGame: {
       type: gameSchema,
     },
 
-    user_games: {
+    userGames: {
       type: [userGameSchema],
       default: [],
     },
