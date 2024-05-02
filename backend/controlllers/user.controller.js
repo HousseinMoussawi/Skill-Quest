@@ -1,32 +1,32 @@
 const { User } = require("../models/user.model");
 
-const getAllUsers = (req, res) => {
+const getAllUsers = async (req, res) => {
   try {
-    const users = User.find();
+    const users = await User.find();
     return res.json(users);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
 };
 
-const getUserById = (req, res) => {
+const getUserById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = User.findById(id);
+    const user = await User.findById(id);
     return res.json(user);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
 };
 
-const updateUserById = (req, res) => {
+const updateUserById = async (req, res) => {
   const { id } = req.params;
   const { email, fullName, favoriteGame, username, skills, profilePictureURL } =
     req.body;
 
   try {
-    const updatedUser = User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       id,
       {
         email,
@@ -41,5 +41,20 @@ const updateUserById = (req, res) => {
     return res.json(updatedUser);
   } catch (e) {
     return res.status(500).send("Internal serve error!:", e);
+  }
+};
+
+const createUser = async (req, res) => {
+  const { email, username, password } = req.body;
+
+  try {
+    const createdUser = await User.create({
+      email,
+      username,
+      password,
+    });
+    return res.json(createdUser);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
   }
 };
