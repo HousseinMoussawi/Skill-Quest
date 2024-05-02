@@ -1,56 +1,65 @@
 const mongoose = require("mongoose");
 const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 const bcrypt = require("bcrypt");
-const REWARD_TYPES = require('../utils/REWARD_TYPES_ENUM');
-const LEVEL_DIFFICULTY = require('../utils/LEVEL_DIFFICULTY_ENUM');
-const LEVEL_STATUS = require('../utils/LEVEL_STATUS_ENUM')
+const REWARD_TYPES = require("../utils/REWARD_TYPES_ENUM");
+const LEVEL_DIFFICULTY = require("../utils/LEVEL_DIFFICULTY_ENUM");
+const LEVEL_STATUS = require("../utils/LEVEL_STATUS_ENUM");
+
+const skillSchema = new mongoose.Schema({
+  name: String,
+});
 
 const levelStatSchema = new mongoose.Schema({
   level_stat_id: mongoose.Schema.Types.ObjectId,
   stat_name: String,
   stat_value: String,
-})
+});
 
 const gameLevelSchema = new mongoose.Schema({
   level_id: mongoose.Schema.Types.ObjectId,
   level_name: String,
 
-  level_difficulty:{
+  level_difficulty: {
     type: String,
-    enum:[LEVEL_DIFFICULTY.BEGINNER,LEVEL_DIFFICULTY.INTERMEDIATE,LEVEL_DIFFICULTY.ADVANCED,LEVEL_DIFFICULTY.PROFESSIONAL],
+    enum: [
+      LEVEL_DIFFICULTY.BEGINNER,
+      LEVEL_DIFFICULTY.INTERMEDIATE,
+      LEVEL_DIFFICULTY.ADVANCED,
+      LEVEL_DIFFICULTY.PROFESSIONAL,
+    ],
     default: LEVEL_DIFFICULTY.BEGINNER,
   },
 
   level_status: {
     type: String,
-    enum:[LEVEL_STATUS.COMPLETE,LEVEL_STATUS.UNLOCKED,LEVEL_STATUS.LOCKED],
+    enum: [LEVEL_STATUS.COMPLETE, LEVEL_STATUS.UNLOCKED, LEVEL_STATUS.LOCKED],
     default: LEVEL_STATUS.UNLOCKED,
   },
 
-  level_stats:{
-    type:[levelStatSchema],
-    default:[],
+  level_stats: {
+    type: [levelStatSchema],
+    default: [],
   },
-})
+});
 
 const gameStatSchema = new mongoose.Schema({
   game_stat_id: mongoose.Schema.Types.ObjectId,
   stat_name: String,
   stat_value: String,
-})
+});
 
 const userGameSchema = new mongoose.Schema({
   game_name: String,
 
-  game_stats:{
+  game_stats: {
     type: [gameStatSchema],
     default: [],
   },
-  game_levels:{
+  game_levels: {
     type: [gameLevelSchema],
-    default:[],
-  }
-})
+    default: [],
+  },
+});
 
 const rewardSchema = new mongoose.Schema({
   reward_id: mongoose.Schema.Types.ObjectId,
@@ -59,14 +68,14 @@ const rewardSchema = new mongoose.Schema({
 
   reward_type: {
     type: String,
-    enum: [REWARD_TYPES.THEME,REWARD_TYPES.BACKGROUND,REWARD_TYPES.EMOJI]
-  }
-})
+    enum: [REWARD_TYPES.THEME, REWARD_TYPES.BACKGROUND, REWARD_TYPES.EMOJI],
+  },
+});
 
 const gameSchema = new mongoose.Schema({
   game_id: mongoose.Schema.Types.ObjectId,
   game_name: String,
-})
+});
 
 const achievementSchema = new mongoose.Schema({
   achievement_id: mongoose.Schema.Types.ObjectId,
@@ -74,9 +83,9 @@ const achievementSchema = new mongoose.Schema({
   achievement_description: String,
   achievement_medal_url: String,
 
-  achievement_game:{
+  achievement_game: {
     type: gameSchema,
-  }
+  },
 });
 
 const userSchema = new mongoose.Schema(
@@ -121,20 +130,29 @@ const userSchema = new mongoose.Schema(
 
     user_achievements: {
       type: [achievementSchema],
-      default:[],
+      default: [],
     },
 
-    user_rewards:{
+    user_rewards: {
       type: [rewardSchema],
-      default:[]
+      default: [],
     },
 
-    user_games:{
+    skills: {
+      type: [skillSchema],
+      default: [],
+    },
+
+    favorite_game: {
+      type: gameSchema,
+    },
+
+    user_games: {
       type: [userGameSchema],
       default: [],
     },
 
-    balance:{
+    balance: {
       type: Number,
       default: 0,
     },
