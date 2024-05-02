@@ -58,3 +58,13 @@ const createUser = async (req, res) => {
     return res.status(500).send("Internal server error!:", e);
   }
 };
+
+const deleteUserById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await User.findByIdAndDelete(id);
+    return res.status(204).send("User deleted successfully");
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
