@@ -3,7 +3,7 @@ const { User } = require("../models/user.model");
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
-    
+
     return res.status(200).json(users);
 
   } catch (e) {
@@ -70,6 +70,7 @@ const createUser = async (req, res) => {
 
 const deleteUserById = async (req, res) => {
   const { id } = req.params;
+
   try {
     await User.findByIdAndDelete(id);
 
@@ -82,6 +83,7 @@ const deleteUserById = async (req, res) => {
 
 const getTopAchievementsById = async (req, res) => {
   const { id } = req.params;
+
   try {
     const user = await User.findById(id);
 
@@ -106,6 +108,7 @@ const getTopAchievementsById = async (req, res) => {
 
 const getAllAchievementsById = async (req, res) => {
   const { id } = req.params;
+
   try {
     const user = await User.findById(id);
 
@@ -121,6 +124,7 @@ const getAllAchievementsById = async (req, res) => {
 
 const getAllUserGamesById = async (req, res) => {
   const { id } = req.params;
+
   try {
     const user = await User.findById(id);
 
@@ -135,6 +139,7 @@ const getAllUserGamesById = async (req, res) => {
 
 const getAllUsersByRole = async (req, res) => {
   const { role } = req.params;
+
   try {
     const users = await User.find({ role: role });
 
@@ -144,6 +149,22 @@ const getAllUsersByRole = async (req, res) => {
     return res.status(500).send("Internal server error!:", e);
   }
 };
+
+const getUserBalanceById = async (req, res)=>{
+    const {id} = req.params
+
+    try{
+        const user = await User.findById(id)
+
+        const balance = user.balance
+
+        return res.status(200).json(balance)
+
+    } catch(e){
+        return res.status(500).send('Internal server error!:',e)
+    }
+}
+
 
 module.exports = {
   getAllAchievementsById,
