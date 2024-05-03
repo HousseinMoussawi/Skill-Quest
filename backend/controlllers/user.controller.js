@@ -68,3 +68,25 @@ const deleteUserById = async (req, res) => {
     return res.status(500).send("Internal server error!:", e);
   }
 };
+
+const getTopAchievementsById = async (req, res)=>{
+const {id} = req.params 
+try{
+    const user = User.findById(id)
+
+    const achievements = user.user_achievements;
+
+    const achievementsArray = Object.entries(achievements)
+
+    const shuffledAchievements = achievementsArray.sort(() => Math.random() - 0.5);
+
+    const topAchievements = shuffledAchievements.slice(0, 4);
+
+    const topAchievementsObject = Object.fromEntries(topAchievements);
+
+    return res.json(topAchievementsObject)
+} catch(e){
+    return res.status(500).send("Internal server error!:", e);
+}
+
+}
