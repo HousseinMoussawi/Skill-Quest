@@ -3,7 +3,7 @@ const { User } = require("../models/user.model");
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
-    return res.json(users);
+    return res.status(200).json(users);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -14,7 +14,7 @@ const getUserById = async (req, res) => {
 
   try {
     const user = await User.findById(id);
-    return res.json(user);
+    return res.status(200).json(user);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -38,7 +38,7 @@ const updateUserById = async (req, res) => {
       },
       { new: true }
     );
-    return res.json(updatedUser);
+    return res.status(200).json(updatedUser);
   } catch (e) {
     return res.status(500).send("Internal serve error!:", e);
   }
@@ -53,7 +53,7 @@ const createUser = async (req, res) => {
       username,
       password,
     });
-    return res.json(createdUser);
+    return res.status(200).json(createdUser);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -69,24 +69,41 @@ const deleteUserById = async (req, res) => {
   }
 };
 
-const getTopAchievementsById = async (req, res)=>{
-const {id} = req.params 
-try{
-    const user = User.findById(id)
+const getTopAchievementsById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id);
 
     const achievements = user.user_achievements;
 
-    const achievementsArray = Object.entries(achievements)
+    const achievementsArray = Object.entries(achievements);
 
-    const shuffledAchievements = achievementsArray.sort(() => Math.random() - 0.5);
+    const shuffledAchievements = achievementsArray.sort(
+      () => Math.random() - 0.5
+    );
 
     const topAchievements = shuffledAchievements.slice(0, 4);
 
     const topAchievementsObject = Object.fromEntries(topAchievements);
 
-    return res.json(topAchievementsObject)
-} catch(e){
-    return res.status(500).send("Internal server error!:", e);
-}
+    return res.status(200).json(topAchievementsObject);
 
-}
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
+const getAllAchievementsById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id)
+
+    const achievements = user.user_achievements;
+
+    return res.status(200).json(achievements)
+
+  } catch (e) {
+    console.log("Internal server error: ", e);
+    return res.status(500).send("Internal server error!");
+  }
+};
