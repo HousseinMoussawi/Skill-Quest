@@ -87,7 +87,6 @@ const getTopAchievementsById = async (req, res) => {
     const topAchievementsObject = Object.fromEntries(topAchievements);
 
     return res.status(200).json(topAchievementsObject);
-
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -96,14 +95,23 @@ const getTopAchievementsById = async (req, res) => {
 const getAllAchievementsById = async (req, res) => {
   const { id } = req.params;
   try {
-    const user = await User.findById(id)
+    const user = await User.findById(id);
 
     const achievements = user.user_achievements;
 
-    return res.status(200).json(achievements)
-
+    return res.status(200).json(achievements);
   } catch (e) {
     console.log("Internal server error: ", e);
     return res.status(500).send("Internal server error!");
   }
+};
+
+module.exports = {
+  getAllAchievementsById,
+  getAllUsers,
+  getTopAchievementsById,
+  getUserById,
+  updateUserById,
+  createUser,
+  deleteUserById,
 };
