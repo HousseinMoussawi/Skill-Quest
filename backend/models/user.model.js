@@ -128,12 +128,12 @@ const userSchema = new mongoose.Schema(
       default: USER_ROLES.PLAYER,
     },
 
-    user_achievements: {
+    userAchievements: {
       type: [achievementSchema],
       default: [],
     },
 
-    user_rewards: {
+    userRewards: {
       type: [rewardSchema],
       default: [],
     },
