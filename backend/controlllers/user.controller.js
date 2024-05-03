@@ -5,6 +5,7 @@ const getAllUsers = async (req, res) => {
     const users = await User.find();
 
     return res.status(200).json(users);
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -17,6 +18,7 @@ const getUserById = async (req, res) => {
     const user = await User.findById(id);
 
     return res.status(200).json(user);
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -43,6 +45,7 @@ const updateUserById = async (req, res) => {
     );
 
     return res.status(200).json(updatedUser);
+
   } catch (e) {
     return res.status(500).send("Internal serve error!:", e);
   }
@@ -59,6 +62,7 @@ const createUser = async (req, res) => {
     });
 
     return res.status(200).json(createdUser);
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -71,6 +75,7 @@ const deleteUserById = async (req, res) => {
     await User.findByIdAndDelete(id);
 
     return res.status(204).send("User deleted successfully");
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -84,17 +89,14 @@ const getTopAchievementsById = async (req, res) => {
 
     const achievements = user.user_achievements;
 
-    const achievementsArray = Object.entries(achievements);
-
-    const shuffledAchievements = achievementsArray.sort(
+    const shuffledAchievements = achievements.sort(
       () => Math.random() - 0.5
     );
 
     const topAchievements = shuffledAchievements.slice(0, 4);
 
-    const topAchievementsObject = Object.fromEntries(topAchievements);
+    return res.status(200).json(topAchievements);
 
-    return res.status(200).json(topAchievementsObject);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -109,6 +111,7 @@ const getAllAchievementsById = async (req, res) => {
     const achievements = user.userAchievements;
 
     return res.status(200).json(achievements);
+
   } catch (e) {
     console.log("Internal server error: ", e);
     return res.status(500).send("Internal server error!:", e);
@@ -124,6 +127,7 @@ const getAllUserGamesById = async (req, res) => {
     const games = user.userGames;
 
     return res.stats(200).json(games);
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -133,9 +137,10 @@ const getAllUsersByRole = async (req, res) => {
   const { role } = req.params;
 
   try {
-    const users = await User.find({ role: role });
+    const users = await User.find({ role: typeof role === 'string'? role.toUpperCase(): role});
 
     return res.status(200).json(users);
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -150,6 +155,7 @@ const getUserBalanceById = async (req, res) => {
     const balance = user.balance;
 
     return res.status(200).json(balance);
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -164,10 +170,34 @@ const getCreatorGamesCountById = async (req, res) => {
     const gamesCount = user.userGames.length;
 
     return res.status(200).json(gamesCount);
+
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
 };
+
+const getCreatorsWithGamesCount = async (req, res) => {
+    try{
+        const creatorsWithGamesCount = await User.aggregate([
+            {
+                $match: {role:'CREATOR'}
+            },
+            {
+                $project:{
+                    _id: 0,
+                    username:1,
+                    gamesCount:{$size:'$userGames'}
+                }
+            }
+        ])
+
+        return res.status(200).json(creatorsWithGamesCount)
+
+    }catch (e){
+        return res.status(500).send('Internal server error!:',e)
+    }
+}
+
 
 module.exports = {
   getAllAchievementsById,
@@ -181,4 +211,5 @@ module.exports = {
   getAllUsersByRole,
   getUserBalanceById,
   getCreatorGamesCountById,
+  getCreatorsWithGamesCount,
 };
