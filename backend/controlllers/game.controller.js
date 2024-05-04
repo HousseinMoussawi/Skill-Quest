@@ -29,8 +29,18 @@ const deleteGameById = async (req, res) => {
   }
 };
 
+const getAllGames = async (req, res) => {
+  try {
+    const games = await Game.find();
+
+    return res.status(200).json(games);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
 module.exports = {
   createGame,
   deleteGameById,
-  
+  getAllGames,
 };
