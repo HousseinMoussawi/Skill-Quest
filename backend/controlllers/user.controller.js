@@ -1,4 +1,6 @@
 const { User } = require("../models/user.model");
+const USER_ROLES  = require('../utils/USER_ROLES_ENUM')
+
 
 const getAllUsers = async (req, res) => {
   try {
@@ -169,7 +171,7 @@ const getCreatorsWithGamesCount = async (req, res) => {
   try {
     const creatorsWithGamesCount = await User.aggregate([
       {
-        $match: { role: "CREATOR" },
+        $match: { role: USER_ROLES.CREATOR },
       },
       {
         $project: {
