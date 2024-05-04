@@ -1,7 +1,14 @@
 const { Game } = require("../models/game.model");
 
 const createGame = async (req, res) => {
-  const { name, description, skills, difficulties } = req.body;
+  const {
+    name,
+    description,
+    skills,
+    difficulties,
+    gameImageURL,
+    gameBackgroundURL,
+  } = req.body;
 
   try {
     const createdGame = await Game.create({
@@ -9,6 +16,8 @@ const createGame = async (req, res) => {
       description,
       skills,
       difficulties,
+      gameImageURL,
+      gameBackgroundURL,
     });
 
     return res.status(200).json(createdGame);
@@ -39,8 +48,43 @@ const getAllGames = async (req, res) => {
   }
 };
 
+const updateGameById = async (req, res) => {
+  const { id } = req.params;
+
+  const {
+    name,
+    description,
+    skills,
+    difficulties,
+    gameImageURL,
+    gameBackgroundURL,
+  } = req.body;
+
+  try {
+    const updatedGame = await Game.findByIdAndUpdate(
+      id,
+      {
+        name,
+        description,
+        skills,
+        difficulties,
+        gameImageURL,
+        gameBackgroundURL,
+      },
+      {
+        new: true,
+      }
+    );
+
+    return res.status(200).json(updatedGame);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
 module.exports = {
   createGame,
   deleteGameById,
   getAllGames,
+  updateGameById,
 };

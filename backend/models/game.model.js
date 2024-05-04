@@ -25,12 +25,12 @@ const gameSchema = new mongoose.Schema(
       require: "Game description is required",
     },
 
-    game_image_url: {
+    gameImageURL: {
       type: String,
       default: "",
     },
 
-    game_background_url: {
+    gameBackgroundURL: {
       type: String,
       default: "",
     },
