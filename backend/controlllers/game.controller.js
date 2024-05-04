@@ -1,10 +1,26 @@
-const Game = require('../models/game.model')
+const { Game } = require("../models/game.model");
 
 const createGame = async (req, res) => {
-    try{
-        const createdGame = await Game.c
+  const { name, description, skills, difficulties } = req.body;
 
-    }catch(e){
-        return res.status(500).send('Internal server error!:',e)
-    }
-}
+  try {
+    const createdGame = await Game.create({
+      name,
+      description,
+      skills,
+      difficulties,
+    });
+
+    return res.status(200).json(createdGame);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
+const deleteGameById = async (req, res) => {
+    
+};
+
+module.exports = {
+  createGame,
+};
