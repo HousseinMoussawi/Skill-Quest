@@ -18,9 +18,19 @@ const createGame = async (req, res) => {
 };
 
 const deleteGameById = async (req, res) => {
-    
+  const { id } = req.params;
+
+  try {
+    await Game.findByIdAndDelete(id);
+
+    return Response(204).send("Game deleted successfully");
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
 };
 
 module.exports = {
   createGame,
+  deleteGameById,
+  
 };
