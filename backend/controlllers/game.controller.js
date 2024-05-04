@@ -82,11 +82,22 @@ const updateGameById = async (req, res) => {
   }
 };
 
+const getGameById = async (req, res) => {
+    const {id} = req.params
 
+    try{
+        const game = await Game.findById(id)
+
+        return res.status(200).json(game)
+    }catch (e) {
+        return res.status(500).send('Internal server error!:',e)
+    }
+}
 
 module.exports = {
   createGame,
   deleteGameById,
   getAllGames,
   updateGameById,
+  getGameById,
 };
