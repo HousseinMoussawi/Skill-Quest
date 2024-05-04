@@ -14,7 +14,7 @@ const rewardSchema = new mongoose.Schema({
 
     type:{
         type: String,
-        enum :[REWARD_TYPES.BACKGROUND,REWARD_TYPES.EMOJI,REWARD_TYPES.THEME],
+        enum :Object.values(REWARD_TYPES),
         default: '',
     },
 

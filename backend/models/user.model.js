@@ -21,18 +21,13 @@ const gameLevelSchema = new mongoose.Schema({
 
   level_difficulty: {
     type: String,
-    enum: [
-      LEVEL_DIFFICULTY.BEGINNER,
-      LEVEL_DIFFICULTY.INTERMEDIATE,
-      LEVEL_DIFFICULTY.ADVANCED,
-      LEVEL_DIFFICULTY.PROFESSIONAL,
-    ],
+    enum: Object.values(LEVEL_DIFFICULTY),
     default: LEVEL_DIFFICULTY.BEGINNER,
   },
 
   level_status: {
     type: String,
-    enum: [LEVEL_STATUS.COMPLETE, LEVEL_STATUS.UNLOCKED, LEVEL_STATUS.LOCKED],
+    enum: Object.values(LEVEL_STATUS),
     default: LEVEL_STATUS.UNLOCKED,
   },
 
@@ -68,7 +63,8 @@ const rewardSchema = new mongoose.Schema({
 
   reward_type: {
     type: String,
-    enum: [REWARD_TYPES.THEME, REWARD_TYPES.BACKGROUND, REWARD_TYPES.EMOJI],
+    enum: Object.values(REWARD_TYPES),
+    default:'',
   },
 });
 
@@ -124,7 +120,7 @@ const userSchema = new mongoose.Schema(
 
     role: {
       type: String,
-      enum: [USER_ROLES.ADMIN, USER_ROLES.CREATOR, USER_ROLES.PLAYER],
+      enum: Object.values(USER_ROLES),
       default: USER_ROLES.PLAYER,
     },
 

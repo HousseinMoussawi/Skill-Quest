@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Level = require("./level.model");
 const GameStat = require("./gameStat.model");
+const DIFFICULTIES = require("../utils/LEVEL_DIFFICULTY_ENUM");
 
 const creatorSchema = new mongoose.Schema({
   creator_id: mongoose.Schema.Types.ObjectId,
@@ -55,6 +56,15 @@ const gameSchema = new mongoose.Schema(
     stats: {
       type: [GameStat.gameStatSchema],
       default: [],
+    },
+
+    difficulties: {
+      type: [
+        {
+          type: String,
+          enum: Object.values(DIFFICULTIES),
+        },
+      ],
     },
   },
   {
