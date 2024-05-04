@@ -11,6 +11,9 @@ app.use("/users", userRouter);
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 
+const gameRouter = require('./routes/game.routes')
+app.use('/games', gameRouter)
+
 app.listen(port, (err) => {
   if (err) throw err;
   console.log(`Server is running on port ${port}`);

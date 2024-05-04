@@ -20,3 +20,5 @@ router.delete('/:id',authMiddleware,creatorMiddleware,deleteGameById)
 router.get('/',authMiddleware,getAllGames)
 router.put('/:id',authMiddleware,creatorMiddleware, updateGameById)
 router.get('/:id',authMiddleware,getGameById)
+
+module.exports = router
