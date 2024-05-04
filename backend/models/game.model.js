@@ -35,6 +35,11 @@ const gameSchema = new mongoose.Schema(
       default: "",
     },
 
+    gameScreenShotsURL: {
+      type:[String],
+      default:[],
+    },
+
     skills: {
       type: [skillSchema],
       default: [],
