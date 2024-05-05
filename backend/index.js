@@ -11,8 +11,11 @@ app.use("/users", userRouter);
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 
-const gameRouter = require('./routes/game.routes')
-app.use('/games', gameRouter)
+const gameRouter = require("./routes/game.routes");
+app.use("/games", gameRouter);
+
+const levelRouter = require("./routes/level.routes");
+app.use("/levels", levelRouter);
 
 app.listen(port, (err) => {
   if (err) throw err;
