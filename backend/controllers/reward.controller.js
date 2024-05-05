@@ -18,15 +18,15 @@ const createReward = async (req, res) => {
   }
 };
 
-const getAllRewards = async (req,res) => {
-    try{
-        const rewards = await Reward.find()
+const getAllRewards = async (req, res) => {
+  try {
+    const rewards = await Reward.find();
 
-        return res.status(200).json(rewards)
-    }catch (e) {
+    return res.status(200).json(rewards);
+  } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
-}
+};
 
 const getRewardById = async (req, res) => {
   const { id } = req.params;

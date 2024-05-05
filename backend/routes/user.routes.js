@@ -15,6 +15,8 @@ const {
     getPlayerGamesProgressById,
   } = require('../controllers/user.controller')
 
+const {buyRewardById} = require('../controllers/reward.controller')
+
 const authMiddleware = require('../middlewares/auth.middleware')  
 const adminMiddleware = require('../middlewares/admin.middleware')
 const playerMiddleware = require('../middlewares/player.middleware')
@@ -34,6 +36,6 @@ router.get('/balance/:id',authMiddleware,getUserBalanceById)
 router.get('/gamesCount/:id',authMiddleware, creatorMiddleware, getCreatorGamesCountById)
 router.get('/creators',authMiddleware,getCreatorsWithGamesCount)
 router.get('/gameProgress/:id',authMiddleware,playerMiddleware,getPlayerGamesProgressById)
-
+router.post('/:userId/buyReward/:rewardId',authMiddleware,buyRewardById)
 
 module.exports = router

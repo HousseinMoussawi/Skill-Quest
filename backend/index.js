@@ -14,6 +14,8 @@ app.use("/auth", authRouter);
 const gameRouter = require("./routes/game.routes");
 app.use("/games", gameRouter);
 
+const rewardRouter = require("./routes/reward.routes");
+app.use("/rewards", rewardRouter);
 
 app.listen(port, (err) => {
   if (err) throw err;
