@@ -26,8 +26,17 @@ const createAchievement = async (req, res) => {
   }
 };
 
+const getAllAchievements = async (req,res) => {
+    try{
+        const achievements = await Achievement.find()
 
+        return res.status(200).json(achievements)
+    }catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+}
 
 module.exports = {
     createAchievement,
+    getAllAchievements,
 }
