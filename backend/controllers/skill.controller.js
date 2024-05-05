@@ -12,9 +12,17 @@ const createSkill = async (req,res) => {
   }
 }
 
+const getAllSkills = async (req,res) => {
+    try{
+        const skills = await Skill.find()
 
+        return res.status(200).json(skills)
+    }catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+}
 
 module.exports = {
     createSkill,
-
+    getAllSkills,
 }
