@@ -18,6 +18,16 @@ const createReward = async (req, res) => {
   }
 };
 
+const getAllRewards = async (req,res) => {
+    try{
+        const rewards = await Reward.find()
+
+        return res.status(200).json(rewards)
+    }catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+}
+
 const getRewardById = async (req, res) => {
   const { id } = req.params;
 
@@ -87,6 +97,7 @@ const buyRewardById = async (req, res) => {
 
 module.exports = {
   createReward,
+  getAllRewards,
   getRewardById,
   updateRewardById,
   deleteRewardById,
