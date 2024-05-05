@@ -54,8 +54,22 @@ const updateAchievementById = async (req, res) => {
   }
 };
 
+const deleteAchievementById = async (req, res) => {
+    const {id} = req.params
+
+    try {
+        await Achievement.findByIdAndDelete(id);
+    
+        return res.status(200).send("Achievement deleted successfully!");
+      } catch (e) {
+        return res.status(500).send("Internal server error!:", e);
+      }
+
+}
+
 module.exports = {
   createAchievement,
   getAllAchievements,
   updateAchievementById,
+  deleteAchievementById,
 };
