@@ -1,4 +1,5 @@
 const { Reward } = require("../models/reward.model");
+const { User } = require("../models/user.model");
 
 const createReward = async (req, res) => {
   const { name, imageURL, type, price } = req.body;
@@ -41,7 +42,20 @@ const updateRewardById = async (req, res) => {
       type,
       price,
     });
+
     return res.status(200).json(updatedReward);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
+const deleteRewardById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Reward.findByIdAndDelete(id);
+
+    return res.status(200).send("Reward deleted successfully!");
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -51,4 +65,5 @@ module.exports = {
   createReward,
   getRewardById,
   updateRewardById,
+  deleteRewardById,
 };
