@@ -7,9 +7,9 @@ const gameSchema = new mongoose.Schema({
 })
 
 const achievementSchema = new mongoose.Schema({
-  achievement_name: String,
-  achievement_description: String,
-  achievement_medal_url: String,
+  name: String,
+  description: String,
+  achievementMedalURL: String,
   game: {
     type: gameSchema,
   }
