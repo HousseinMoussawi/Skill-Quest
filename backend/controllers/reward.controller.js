@@ -17,6 +17,29 @@ const createReward = async (req, res) => {
   }
 };
 
+const getRewardById = async (req,res) => {
+    const {id} = req.params
+
+    try{
+        const reward = await Reward.findById(id)
+
+        return res.status(200).json(reward)
+    }catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+}
+
+const updateRewardById = async (req,res) => {
+    co
+    try{
+        return res.status(200)
+    }catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+}
+
+
 module.exports = {
   createReward,
+  getRewardById,
 };
