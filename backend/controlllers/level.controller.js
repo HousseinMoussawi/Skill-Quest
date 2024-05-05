@@ -21,6 +21,19 @@ const addLevelToGameById = async (req, res) => {
   }
 };
 
+const getGameLevelById = async (req,res) => {
+    const {id} = req.params
+
+    try{
+        const level = await Level.findById(id)
+
+        return res.status(200).json(level)
+    }catch (e) {
+        return res.status(500).send("Internal server error!:", e);
+      }
+}
+
 module.exports = {
   addLevelToGameById,
+  getGameLevelById
 };
