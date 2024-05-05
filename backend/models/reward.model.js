@@ -7,7 +7,7 @@ const rewardSchema = new mongoose.Schema({
         unique: true,
     },
 
-    image_url:{
+    imageURL:{
         type: String,
         unique: true,
     },
