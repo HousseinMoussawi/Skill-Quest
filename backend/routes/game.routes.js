@@ -6,7 +6,7 @@ const {
   getAllGames,
   updateGameById,
   getGameById,
-} = require("../controlllers/game.controller");
+} = require("../controllers/game.controller");
 
 const adminMiddleware = require('../middlewares/admin.middleware')
 const playerMiddleware = require('../middlewares/player.middleware')

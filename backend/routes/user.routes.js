@@ -13,7 +13,7 @@ const {
     getCreatorGamesCountById,
     getCreatorsWithGamesCount,
     getPlayerGamesProgressById,
-  } = require('../controlllers/user.controller')
+  } = require('../controllers/user.controller')
 
 const authMiddleware = require('../middlewares/auth.middleware')  
 const adminMiddleware = require('../middlewares/admin.middleware')
