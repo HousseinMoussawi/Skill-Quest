@@ -17,29 +17,38 @@ const createReward = async (req, res) => {
   }
 };
 
-const getRewardById = async (req,res) => {
-    const {id} = req.params
+const getRewardById = async (req, res) => {
+  const { id } = req.params;
 
-    try{
-        const reward = await Reward.findById(id)
+  try {
+    const reward = await Reward.findById(id);
 
-        return res.status(200).json(reward)
-    }catch (e) {
+    return res.status(200).json(reward);
+  } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
-}
+};
 
-const updateRewardById = async (req,res) => {
-    co
-    try{
-        return res.status(200)
-    }catch (e) {
+const updateRewardById = async (req, res) => {
+  const { id } = req.params;
+
+  const { name, imageURL, type, price } = req.body;
+
+  try {
+    const updatedReward = await Reward.findByIdAndUpdate(id, {
+      name,
+      imageURL,
+      type,
+      price,
+    });
+    return res.status(200).json(updatedReward);
+  } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
-}
-
+};
 
 module.exports = {
   createReward,
   getRewardById,
+  updateRewardById,
 };
