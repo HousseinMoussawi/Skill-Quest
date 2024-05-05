@@ -20,6 +20,9 @@ app.use("/rewards", rewardRouter);
 const achievementRouter = require('./routes/achievement.routes')
 app.use('/achievements',achievementRouter)
 
+const skillRouter = require('./routes/skill.routes')
+app.user('skills',skillRouter)
+
 app.listen(port, (err) => {
   if (err) throw err;
   console.log(`Server is running on port ${port}`);
