@@ -51,7 +51,10 @@ const updateRewardById = async (req, res) => {
       imageURL,
       type,
       price,
-    });
+    },
+{
+    new:true
+});
 
     return res.status(200).json(updatedReward);
   } catch (e) {
