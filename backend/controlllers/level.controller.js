@@ -1,5 +1,6 @@
 const { Game } = require("../models/game.model");
 const { Level } = require("../models/level.model");
+const { ADVANCED } = require("../utils/LEVEL_DIFFICULTY_ENUM");
 
 const addLevelToGameById = async (req, res) => {
   const { id } = req.params;
@@ -21,19 +22,34 @@ const addLevelToGameById = async (req, res) => {
   }
 };
 
-const getGameLevelById = async (req,res) => {
-    const {id} = req.params
+const getGameLevelById = async (req, res) => {
+  const { id } = req.params;
 
-    try{
-        const level = await Level.findById(id)
+  try {
+    const level = await Level.findById(id);
 
-        return res.status(200).json(level)
-    }catch (e) {
-        return res.status(500).send("Internal server error!:", e);
-      }
-}
+    return res.status(200).json(level);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
+const getAllGameLevelsById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const game = await Game.findById(id);
+
+    const gameLevels = game.levels;
+
+    return res.status(200).json(gameLevels);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
 
 module.exports = {
   addLevelToGameById,
-  getGameLevelById
+  getGameLevelById,
+  getAllGameLevelsById,
 };
