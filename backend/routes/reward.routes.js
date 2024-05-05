@@ -1,20 +1,22 @@
 const express = require("express");
 
 const {
-    createReward,
+  createReward,
+  getAllRewards,
   getRewardById,
   updateRewardById,
   deleteRewardById,
-} = require('../controllers/reward.controller')
+} = require("../controllers/reward.controller");
 
-const adminMiddleware = require('../middlewares/admin.middleware')
-const playerMiddleware = require('../middlewares/player.middleware')
-const authMiddleware = require('../middlewares/auth.middleware')
-const creatorMiddleware = require('../middlewares/creator.middleware')
+const adminMiddleware = require("../middlewares/admin.middleware");
+const authMiddleware = require("../middlewares/auth.middleware");
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/',authMiddleware,adminMiddleware,createReward)
-router.get('/:id',)
+router.post("/", authMiddleware, adminMiddleware, createReward);
+router.get("/:id", authMiddleware, getRewardById);
+router.get("/", authMiddleware, getAllRewards);
+router.put("/:id", authMiddleware, adminMiddleware, updateRewardById);
+router.delete("/:id", authMiddleware, adminMiddleware, deleteRewardById);
 
-module.exports = router
+module.exports = router;
