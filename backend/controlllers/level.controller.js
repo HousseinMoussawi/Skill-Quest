@@ -48,8 +48,50 @@ const getAllGameLevelsById = async (req, res) => {
   }
 };
 
+const updateGameLevelById = async (req, res) => {
+  const { gameId, levelId } = req.params;
+
+  const { level } = req.body;
+
+  try {
+    const game = await Game.findById(gameId);
+
+    const levelIndex = game.levels.findIndex(
+      (level) => level._id.toString() === levelId
+    );
+
+    game.levels[levelIndex] = level;
+
+    return res.status(200).json(game.levels[levelIndex]);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
+const deleteGameLevelById = async (req, res) => {
+  const { gameId, leveId } = req.params;
+
+  try {
+    const game = await Game.findById(gameId);
+
+    const levelIndex = game.levels.findIndex(
+      (level) => level._id.toString() === leveId
+    );
+
+    game.levels.splice(levelIndex, 1);
+
+    await game.save();
+
+    return res.status(200).send("Level deleted successfully!");
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
 module.exports = {
   addLevelToGameById,
   getGameLevelById,
   getAllGameLevelsById,
+  updateGameLevelById,
+  deleteGameLevelById,
 };
