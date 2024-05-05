@@ -34,7 +34,19 @@ const updateSkillById = async (req, res) => {
       { new: true }
     );
 
-    return res.status(200).json(updatedSKill)
+    return res.status(200).json(updatedSKill);
+  } catch (e) {
+    return res.status(500).send("Internal server error!:", e);
+  }
+};
+
+const deleteSkillById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Skill.findByIdAndDelete(id);
+
+    return res.status(200).send("Skill deleted successfully!");
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -44,5 +56,5 @@ module.exports = {
   createSkill,
   getAllSkills,
   updateSkillById,
-  
+  deleteSkillById,
 };
