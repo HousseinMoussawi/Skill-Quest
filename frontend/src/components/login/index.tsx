@@ -1,13 +1,15 @@
-import React,{ useState }from "react";
+import React,{ ChangeEvent, FC }from "react";
 import { LoginWithGoogle } from "../login-with-google";
 
 type Props = {
   title: string;
+  emailChangeHandler:(value:ChangeEvent<HTMLInputElement>)=>void,
+  passwordChangeHandler:(value:ChangeEvent<HTMLInputElement>)=>void,
+  loginButtonHandler:()=>void,
 };
 
-const Login = (props: Props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login: FC<Props> = ({title,emailChangeHandler, passwordChangeHandler,loginButtonHandler}) => {
+  
 
   const login = async () => {
     
@@ -15,26 +17,22 @@ const Login = (props: Props) => {
 
   return (
     <div>
-      <h1>{props.title} Login</h1>
+      <h1>{title} Login</h1>
       <input
         type="text"
         name=""
         id=""
         placeholder="Username or email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
+        onChange={emailChangeHandler}
       />
       <input
         type="text"
         name=""
         id=""
         placeholder="Password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
+        onChange={passwordChangeHandler}
       />
-      <button onClick={login}>Login</button>
+      <button onClick={loginButtonHandler}>Login</button>
       <h2>
         don't have an account? <span>Sign up</span>
       </h2>
