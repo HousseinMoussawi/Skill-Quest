@@ -1,18 +1,24 @@
 const jwt = require("jsonwebtoken");
 const { User } = require("../models/user.model");
+const {hashSync} = require("bcrypt");
 
 const register = async (req, res) => {
   const { email, password, username, role } = req.body;
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(401).send("User already exist");
+    
+    console.log(password)
+    const hashedPassword = await hashSync(password, 10);
 
     const createdUser = await User.create({
       email,
       role,
       username,
-      password,
+      password: hashedPassword,
     });
+
+    await createdUser.save()
     return res.status(201).json(createdUser);
   } catch (e) {
     console.log("Internal server error: ", e);
