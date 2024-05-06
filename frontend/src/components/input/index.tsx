@@ -1,20 +1,16 @@
-import React from 'react'
+import React, { ChangeEvent, FC } from 'react'
 import './index.css'
-import { useState } from 'react'
 
 
 type Props = {
     placeholder: string,
-    handleChange: string,
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void,
 }
 
-const Input = () => {
-    const [input, setInput] = useState<string>()
+const Input: FC<Props> = ({placeholder, handleChange}) => {
   return (
     <div>
-        <input type="text" placeholder={placeholder} onChange={(e)=>{
-            setInput(e.target.value)
-        }}/>
+        <input type="text" placeholder={placeholder} onChange={handleChange}/>
     </div>
   )
 }
