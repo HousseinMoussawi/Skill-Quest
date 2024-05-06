@@ -1,4 +1,5 @@
 import './styles/App.css';
+import './styles/utilities.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Creators from './pages/creators';
 import Admin from './pages/admin';
