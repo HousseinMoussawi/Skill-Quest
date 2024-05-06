@@ -11,7 +11,7 @@ const Auth = (props: Props) => {
       <div className="left-half">
         <img src={loginImage} alt="" />
       </div>
-      <div className="right-half">
+      <div className="right-half flex center">
         <Login title="Hello" />
       </div>
     </div>

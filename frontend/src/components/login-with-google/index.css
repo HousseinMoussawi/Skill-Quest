@@ -1,0 +1,9 @@
+.google{
+    height: 40px;
+    width: 150px;
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 5px;
+    color: var(--color-white);
+    font-size: 15px;
+}
