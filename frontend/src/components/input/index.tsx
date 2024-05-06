@@ -10,7 +10,7 @@ type Props = {
 const Input: FC<Props> = ({placeholder, handleChange}) => {
   return (
     <div>
-        <input type="text" placeholder={placeholder} onChange={handleChange}/>
+        <input className='search' type="text" placeholder={placeholder} onChange={handleChange}/>
     </div>
   )
 }

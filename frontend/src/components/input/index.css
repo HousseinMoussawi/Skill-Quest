@@ -1,0 +1,8 @@
+.search { 
+  min-width: 300px;
+  max-width: 530px;
+  height: 37px;
+  border-radius: 10px;
+  border: 0.5px solid var(--color-primary);
+  text-align: center;
+}
