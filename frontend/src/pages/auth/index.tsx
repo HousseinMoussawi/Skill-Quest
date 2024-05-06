@@ -3,6 +3,7 @@ import './index.css'
 import UserType from "../../components/user_type_btn";
 import loginImage from '../../assets/login-image.png'
 import Login from "../../components/login";
+import Signup from "../../components/signup";
 type Props = {};
 
 
@@ -15,7 +16,7 @@ const Auth = (props: Props) => {
       </div>
       <div className="right-half flex center">
         <UserType opposite="player" user='creator' auth="registration" />
-        <Login title="Hello" />
+        <Signup title="Hello" />
       </div>
     </div>
   );
