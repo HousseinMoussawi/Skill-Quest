@@ -7,7 +7,7 @@ type Props = {};
 
 const Auth = (props: Props) => {
   return (
-    <div className="auth flex center">
+    <div className="auth flex">
       <div className="left-half">
         <img src={loginImage} alt="" />
       </div>

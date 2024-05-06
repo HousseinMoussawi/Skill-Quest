@@ -1,22 +1,22 @@
-import React,{ ChangeEvent, FC }from "react";
+import React, { ChangeEvent, FC } from "react";
 import { LoginWithGoogle } from "../login-with-google";
+import './index.css'
 
 type Props = {
   title: string;
-  emailChangeHandler:(value:ChangeEvent<HTMLInputElement>)=>void,
-  passwordChangeHandler:(value:ChangeEvent<HTMLInputElement>)=>void,
-  loginButtonHandler:()=>void,
+  emailChangeHandler: (value: ChangeEvent<HTMLInputElement>) => void;
+  passwordChangeHandler: (value: ChangeEvent<HTMLInputElement>) => void;
+  loginButtonHandler: () => void;
 };
 
-const Login: FC<Props> = ({title,emailChangeHandler, passwordChangeHandler,loginButtonHandler}) => {
-  
-
-  const login = async () => {
-    
-  };
-
+const Login: FC<Props> = ({
+  title,
+  emailChangeHandler,
+  passwordChangeHandler,
+  loginButtonHandler,
+}) => {
   return (
-    <div>
+    <div className="login flex column center">
       <h1>{title} Login</h1>
       <input
         type="text"
@@ -33,11 +33,11 @@ const Login: FC<Props> = ({title,emailChangeHandler, passwordChangeHandler,login
         onChange={passwordChangeHandler}
       />
       <button onClick={loginButtonHandler}>Login</button>
-      <h2>
+      <h5>
         don't have an account? <span>Sign up</span>
-      </h2>
-      <h2>------------------Or------------------</h2>
-      <LoginWithGoogle/>
+      </h5>
+      <h2>Or</h2>
+      <LoginWithGoogle />
     </div>
   );
 };
