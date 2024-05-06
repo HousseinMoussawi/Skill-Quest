@@ -1,56 +1,46 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import { LoginWithGoogle } from "../login-with-google";
+import './index.css'
 
 type Props = {
   title: string;
+  emailChangeHandler: (value: ChangeEvent<HTMLInputElement>) => void;
+  passwordChangeHandler: (value: ChangeEvent<HTMLInputElement>) => void;
+  usernameChangeHandler: (value: ChangeEvent<HTMLInputElement>) => void;
+  signupButtonHandler: () => void;
 };
 
-const Signup = (props: Props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-
-
-  const signup = ()=> {
-
-  }
-
-
+const Signup: FC<Props> = ({title,usernameChangeHandler,passwordChangeHandler,emailChangeHandler,signupButtonHandler}) => {
+  
   return (
-    <div>
-      <h1>{props.title} Signup</h1>
+    <div className="signup flex column center">
+      <h1>{title} Signup</h1>
       <input
         type="text"
         name=""
         id=""
         placeholder="Username"
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
+        onChange={usernameChangeHandler}
       />
       <input
         type="text"
         name=""
         id=""
         placeholder="Email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
+        onChange={emailChangeHandler}
       />
       <input
         type="text"
         name=""
         id=""
         placeholder="Password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
+        onChange={passwordChangeHandler}
       />
-      <button onClick={signup}>Signup</button>
+      <button onClick={signupButtonHandler}>Signup</button>
       <h2>
         already have an account? <span>Login</span>
       </h2>
-      <h2>------------------Or------------------</h2>
+      <h2>Or</h2>
       <LoginWithGoogle/>
     </div>
   );
