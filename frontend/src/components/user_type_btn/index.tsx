@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 
 type Props = {
     opposite:string,
@@ -8,9 +9,9 @@ type Props = {
 
 const UserType = (props: Props) => {
   return (
-    <div>
-        <h2>Not a {props.opposite}?</h2>
-        <button>{props.user}{props.auth}</button>
+    <div className='user-type flex center'>
+        <h4>Not a {props.opposite}?</h4>
+        <button>{props.user} {props.auth}</button>
     </div>
   )
 }
