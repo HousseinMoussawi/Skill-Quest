@@ -14,6 +14,10 @@ import PlayerProfile from './pages/player-profile';
 import Progress from './pages/progress';
 import Rewards from './pages/rewards';
 import Game from './pages/game';
+import CreatorLogin from './pages/auth/creator-login';
+import CreatorSignup from './pages/auth/creator-signup';
+import PlayerLogin from './pages/auth/player-login';
+import PlayerSignup from './pages/auth/player-signup';
 
 
 
@@ -25,7 +29,12 @@ function App() {
       <Route path='/' element={<Home/>}></Route>
       <Route path='/admin' element={<Admin/>}></Route>
       <Route path='/creators' element={<Creators/>}></Route>
-      <Route path='/auth' element={<Auth/>}></Route>
+      <Route path='/auth' element={<Auth/>}>
+          <Route path='/auth/creator-login' element={<CreatorLogin/>}></Route>
+          <Route path='/auth/creator-signup' element={<CreatorSignup/>}></Route>
+          <Route path='/auth/player-login' element={<PlayerLogin/>}></Route>
+          <Route path='/auth/player-signup' element={<PlayerSignup/>}></Route>
+      </Route>
       <Route path='/create-game' element={<CreateGame/>}></Route>
       <Route path='/creator-achievements' element={<CreatorAchievements/>}></Route>
       <Route path='/creator-profile' element={<CreatorProfile/>}></Route>
