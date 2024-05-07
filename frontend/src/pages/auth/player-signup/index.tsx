@@ -5,7 +5,7 @@ import Signup from '../../../components/signup'
 const PlayerSignup = () => {
   return (
     <div className='right-half flex center'>
-        <UserType auth='Registration' opposite='Player' user='Creator' />
+        <UserType auth='Login' opposite='Player' user='Creator' location='/auth/creator-signup'/>
         <Signup title='Player'/>
     </div>
   )
