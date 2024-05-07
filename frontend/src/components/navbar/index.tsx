@@ -3,16 +3,27 @@ import { NavLink } from "react-router-dom";
 import NavbarProfile from "../navbar-profile";
 import './index.css'
 import Logo from '../../assets/final_logo.svg'
+import { useNavigate } from "react-router-dom";
+
 
 type Props = {
   name: string;
   imageURL: string;
 };
 
+
+
 const Navbar: FC<Props> = ({name,imageURL}) => {
+
+  const navigate = useNavigate()
+
+  const handleLogoClick =() => {
+    navigate('/')
+  }
+
   return (
     <div className="navbar flex evenly ">
-      <img src={Logo} alt="" />
+      <img src={Logo} alt="" onClick={handleLogoClick}/>
       <ul className="navbar-list flex evenly center">
         <li>
           <NavLink to="/games">Games</NavLink>
