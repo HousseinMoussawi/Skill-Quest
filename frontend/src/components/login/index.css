@@ -41,8 +41,9 @@
 }
 
 .login h5{
-    font-weight: 800;
+    font-weight: 200;
     font-size: 20px;
+    color: var(--color-dark-grey);
 }
 
 .login span{
