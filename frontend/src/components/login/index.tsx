@@ -41,7 +41,7 @@ const Login: FC<Props> = ({
       if(response.status==200)
         {
           localStorage.setItem('token',response.data.token)
-          console.log(response.data.token)
+          console.log(response.data)
         }
       
     } catch (error) {
