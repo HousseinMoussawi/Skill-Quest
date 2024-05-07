@@ -11,11 +11,11 @@ type Props = {
 
 const Navbar: FC<Props> = ({name,imageURL}) => {
   return (
-    <div className="navbar flex evenly">
+    <div className="navbar flex evenly ">
       <img src={Logo} alt="" />
-      <ul className="navbar-list flex  evenly center">
+      <ul className="navbar-list flex evenly center">
         <li>
-          <NavLink to="/">Games</NavLink>
+          <NavLink to="/games">Games</NavLink>
         </li>
         <li>
           <NavLink to="/progress">Progress</NavLink>
@@ -24,13 +24,13 @@ const Navbar: FC<Props> = ({name,imageURL}) => {
           <NavLink to="/creators">Creators</NavLink>
         </li>
         <li>
-          <NavLink to="/create">Create</NavLink>
+          <NavLink to="/create-game">Create</NavLink>
         </li>
         <li>
           <NavLink to="/rewards">Rewards</NavLink>
         </li>
       </ul>
-        <div className="relative">
+        <div className="">
           <NavbarProfile name={name} imageURl={imageURL} />
         </div>
     </div>

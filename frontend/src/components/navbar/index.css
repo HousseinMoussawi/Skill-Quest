@@ -5,7 +5,8 @@
 
 .navbar-list{
     height: 100%;
-    width: 60%
+    width: 60%;
+    max-width:600px;
 }
 
 .navbar-list li{
@@ -28,4 +29,8 @@
 
 .navbar-list li a:visited{
     color: black;
+}
+
+.nav-without-logo{
+    width: 70%;
 }

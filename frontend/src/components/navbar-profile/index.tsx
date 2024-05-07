@@ -27,10 +27,10 @@ const NavbarProfile: FC<Props> = ({ name, imageURl }) => {
       <div className="list-wrapper">
         <ul className={`list flex center border column ${hidden ? "hidden" : ""}`}>
           <li className="flex center">
-            <NavLink to="/">Profile</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
           </li>
           <li className="flex center">
-            <NavLink to="/player-achievements">Achievements</NavLink>
+            <NavLink to="/achievements">Achievements</NavLink>
           </li>
           <li className="flex center">Logout</li>
         </ul>
