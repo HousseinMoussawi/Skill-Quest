@@ -1,0 +1,54 @@
+.profile-div{
+    width: fit-content;
+    width: -moz-fit-content
+}
+
+.navbar-profile{
+    padding: 5px;
+    width: fit-content;
+    width: -moz-fit-content;
+    gap: 5px;
+}
+
+.navbar-profile-image{
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+
+.list-wrapper{
+    background-color: #F1F4F8;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+.list{
+    list-style-type: none;
+    width: 100%;
+    border-radius: inherit;
+}
+.list li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    border-radius: inherit;
+    height: 40px;
+}
+
+
+.list li{
+    width: 100%;
+    border-radius: inherit;
+    height:40px;
+}
+
+.active{
+    background: var(--color-primary);
+    color:var(--color-white) !important;
+}
+
+.list li a:visited{
+    color: black;
+}

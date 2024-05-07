@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import "./index.css";
 import { NavLink } from "react-router-dom";
 
+
 type Props = {
   name: string;
   imageURl: string;
@@ -12,7 +13,6 @@ const NavbarProfile: FC<Props> = ({ name, imageURl }) => {
 
   const toggleList = () => {
     setHidden(!hidden);
-    console.log(hidden)
   };
 
   return (
@@ -22,16 +22,17 @@ const NavbarProfile: FC<Props> = ({ name, imageURl }) => {
           <img src={imageURl} alt="" className="border" />
         </div>
         <h4>{name}</h4>
+      
       </div>
       <div className="list-wrapper">
         <ul className={`list flex center column ${hidden ? "hidden" : ""}`}>
-          <li>
+          <li className="flex center">
             <NavLink to="/auth/">Profile</NavLink>
           </li>
-          <li>
+          <li className="flex center">
             <NavLink to="/player-achievements">Achievements</NavLink>
           </li>
-          <li>Logout</li>
+          <li className="flex center">Logout</li>
         </ul>
       </div>
     </div>
