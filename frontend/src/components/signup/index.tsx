@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { ChangeEvent, FC } from "react";
 import { LoginWithGoogle } from "../login-with-google";
 import './index.css'
 
@@ -37,9 +37,9 @@ const Signup: FC<Props> = ({title,usernameChangeHandler,passwordChangeHandler,em
         onChange={passwordChangeHandler}
       />
       <button onClick={signupButtonHandler}>Signup</button>
-      <h2>
+      <h5>
         already have an account? <span>Login</span>
-      </h2>
+      </h5>
       <h2>Or</h2>
       <LoginWithGoogle/>
     </div>
