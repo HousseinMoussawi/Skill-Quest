@@ -1,0 +1,31 @@
+.navbar{
+    width: 100%;
+    height: 80px;
+}
+
+.navbar-list{
+    height: 100%;
+    width: 60%
+}
+
+.navbar-list li{
+    list-style-type: none;
+    height: 60%;
+}
+
+.navbar-list li a{
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+}
+
+.navbar-list .active{
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.navbar-list li a:visited{
+    color: black;
+}

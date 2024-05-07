@@ -132,5 +132,7 @@
 
 .hidden{
     display: none;
+    border: none;
 }
 
+.relative{position: relative;}

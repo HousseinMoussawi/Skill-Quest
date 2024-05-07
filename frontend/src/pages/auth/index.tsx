@@ -2,7 +2,7 @@ import React from "react";
 import './index.css'
 import loginImage from '../../assets/login-image.png'
 import { Outlet } from "react-router-dom";
-import NavbarProfile from "../../components/navbar-profile";
+import Navbar from "../../components/navbar";
 
 
 const Auth = () => {
@@ -12,7 +12,7 @@ const Auth = () => {
         
         <img src={loginImage} alt="" />
       </div>
-      <NavbarProfile name ='houssein' imageURl="asdsaddwa"/>
+      
       <Outlet/>
     </div>
   );

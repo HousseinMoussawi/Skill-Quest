@@ -1,12 +1,13 @@
 .profile-div{
+    width: -moz-fit-content;
     width: fit-content;
-    width: -moz-fit-content
+    margin-top: 10px;
 }
 
 .navbar-profile{
     padding: 5px;
-    width: fit-content;
     width: -moz-fit-content;
+    width: fit-content;
     gap: 5px;
 }
 
@@ -25,7 +26,7 @@
 .list{
     list-style-type: none;
     width: 100%;
-    border-radius: inherit;
+    border-radius:11px;
 }
 .list li a{
     display: flex;
@@ -33,7 +34,7 @@
     align-items: center;
     text-decoration: none;
     width: 100%;
-    border-radius: inherit;
+    border-radius: 10px;
     height: 40px;
 }
 
@@ -44,7 +45,7 @@
     height:40px;
 }
 
-.active{
+.list li a.active{
     background: var(--color-primary);
     color:var(--color-white) !important;
 }
@@ -52,3 +53,4 @@
 .list li a:visited{
     color: black;
 }
+
