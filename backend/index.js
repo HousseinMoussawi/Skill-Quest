@@ -1,27 +1,34 @@
 const express = require("express");
 const { connect } = require("./configs/mongoDB.config");
+const cors = require('cors');
+const userRouter = require("./routes/user.routes");
+const authRouter = require("./routes/auth.routes");
+const gameRouter = require("./routes/game.routes");
+const rewardRouter = require("./routes/reward.routes");
+const achievementRouter = require('./routes/achievement.routes');
+const skillRouter = require('./routes/skill.routes');
+
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT;
+
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
+
 app.use(express.json());
 
-const userRouter = require("./routes/user.routes");
 app.use("/users", userRouter);
 
-const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
 
-const gameRouter = require("./routes/game.routes");
 app.use("/games", gameRouter);
 
-const rewardRouter = require("./routes/reward.routes");
 app.use("/rewards", rewardRouter);
 
-const achievementRouter = require('./routes/achievement.routes')
-app.use('/achievements',achievementRouter)
+app.use('/achievements', achievementRouter);
 
-const skillRouter = require('./routes/skill.routes')
-app.use('skills',skillRouter)
+app.use('/skills', skillRouter);
 
 app.listen(port, (err) => {
   if (err) throw err;
