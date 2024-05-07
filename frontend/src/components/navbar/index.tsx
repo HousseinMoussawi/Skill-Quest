@@ -1,11 +1,22 @@
-import React from 'react'
-
+import React, { FC } from 'react'
+import { NavLink } from 'react-router-dom'
 type Props = {}
 
-const navbar = (props: Props) => {
+const Navbar: FC<Props> = () => {
+
+  
   return (
-    <div>navbar</div>
+    <div>
+      <ul>
+        <li><NavLink to='/games'>Games</NavLink></li>
+        <li><NavLink to='/progress'>Progress</NavLink></li>
+        <li><NavLink to='/creators'>Creators</NavLink></li>
+        <li><NavLink to='/create'>Create</NavLink></li>
+        <li><NavLink to='/rewards'>Rewards</NavLink></li>
+        
+      </ul>
+    </div>
   )
 }
 
-export default navbar
+export default Navbar
