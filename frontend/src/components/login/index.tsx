@@ -32,6 +32,7 @@ const Login: FC<Props> = ({
       const body = {
         email: email,
         password:password,
+        role: title.toUpperCase()
       }
 
      
@@ -40,7 +41,8 @@ const Login: FC<Props> = ({
       )
       if(response.status==200)
         {
-          localStorage.setItem('token',response.data.token)
+          const data = response.data
+          localStorage.setItem('token',data.token)
           console.log(response.data)
         }
       

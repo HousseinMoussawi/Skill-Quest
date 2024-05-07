@@ -1,14 +1,15 @@
 const jwt = require("jsonwebtoken");
 const { User } = require("../models/user.model");
-const {hashSync} = require("bcrypt");
+const { hashSync } = require("bcrypt");
+const bcrypt = require('bcrypt')
 
 const register = async (req, res) => {
   const { email, password, username, role } = req.body;
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(401).send("User already exist");
-    
-    console.log(password)
+
+    console.log(password);
     const hashedPassword = await hashSync(password, 10);
 
     const createdUser = await User.create({
@@ -18,7 +19,7 @@ const register = async (req, res) => {
       password: hashedPassword,
     });
 
-    await createdUser.save()
+    await createdUser.save();
     return res.status(201).json(createdUser);
   } catch (e) {
     console.log("Internal server error: ", e);
@@ -27,15 +28,23 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password: plainTextPassword } = req.body;
+  const { email, password: plainTextPassword, role } = req.body;
 
   try {
     const user = await User.findOne({ email });
     if (!user) return res.status(401).send("Incorrect email/passowrd");
 
-    const isValidPassword = user.comparePassword(plainTextPassword);
+    const isValidPassword = await bcrypt.compare(plainTextPassword,user.password)
     if (!isValidPassword)
       return res.status(401).send("Incorrect email/passowrd");
+
+    const userRole = user.role;
+    
+    if (role !== userRole) {
+      return res
+        .status(401)
+        .send(`You are a ${userRole} trying to login as a ${role}`);
+    }
 
     const { password, ...userWithoutPassword } = user.toJSON();
     const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
