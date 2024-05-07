@@ -76,3 +76,6 @@
   left:0
 }
 
+span:hover{
+    cursor: pointer;
+}

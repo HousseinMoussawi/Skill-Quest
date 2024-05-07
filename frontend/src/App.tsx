@@ -32,7 +32,7 @@ function App() {
       <Route path='/auth' element={<Auth/>}>
           <Route path='/auth/creator-login' element={<CreatorLogin/>}></Route>
           <Route path='/auth/creator-signup' element={<CreatorSignup/>}></Route>
-          <Route path='/auth/player-login' element={<PlayerLogin/>}></Route>
+          <Route path='/auth/' element={<PlayerLogin/>}></Route>
           <Route path='/auth/player-signup' element={<PlayerSignup/>}></Route>
       </Route>
       <Route path='/create-game' element={<CreateGame/>}></Route>
