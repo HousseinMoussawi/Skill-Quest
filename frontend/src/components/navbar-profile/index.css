@@ -21,6 +21,7 @@
     background-color: #F1F4F8;
     border-radius: 10px;
     height: fit-content;
+    z-index: 1;
 }
 
 .list{

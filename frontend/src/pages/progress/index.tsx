@@ -7,7 +7,7 @@ type Props = {}
 
 const Progress = (props: Props) => {
   return (
-    <div className='whole-screen border flex center'> 
+    <div className='whole-screen flex center'> 
         <div className='progress-div border'>
           <ul className='games-list flex evenly'>
             <li><NavLink to='asdadd'>asdasd</NavLink></li>
