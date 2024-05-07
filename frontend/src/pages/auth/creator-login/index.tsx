@@ -5,8 +5,8 @@ import Login from '../../../components/login'
 const CreatorLogin = () => {
   return (
     <div className='right-half flex center'>
-        <UserType auth='Registration' opposite='Creator' user='Player' location='/auth/' />
-        <Login title='Creator'/>
+        <UserType auth='Login' opposite='Creator' user='Player' location='/auth/' />
+        <Login title='Creator' location='/auth/creator-signup'/>
     </div>
   )
 }
