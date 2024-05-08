@@ -2,9 +2,9 @@ import React, { ChangeEvent, FC, useState } from "react";
 import { LoginWithGoogle } from "../login-with-google";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
-import axios, { AxiosRequestConfig } from 'axios';
-
-
+import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import {ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 type Props = {
@@ -44,15 +44,22 @@ const Login: FC<Props> = ({
           const data = response.data
           localStorage.setItem('token',data.token)
           console.log(response.data)
+          toast.success('Login successful')
         }
+        else{
+          console.log(response.data)
+        }
+
       
-    } catch (error) {
-      console.log(error)
+    } catch (error:any) {
+      console.log(error.response.data)
+      toast.error(error.response.data)
     }
   }
 
   return (
     <div className="login flex column center">
+      <ToastContainer />
       <h1>{title} Login</h1>
       <input
         type="text"
