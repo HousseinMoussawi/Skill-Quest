@@ -17,6 +17,11 @@
     color: var(--color-third);
 }
 
+.search-bar input:focus{
+    outline:none;
+    border: 2px solid var(--color-primary);
+}
+
 .filters-div{
     width: 50%;
     font-weight: 100;
