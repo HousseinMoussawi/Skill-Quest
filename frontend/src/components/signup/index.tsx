@@ -4,6 +4,8 @@ import "./index.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import {ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
   title: string;
@@ -44,10 +46,12 @@ const Signup: FC<Props> = ({
       if(response.status===200)
         {
           console.log(response.data)
+          toast.success('Registration successful')
         }
       
-    } catch (error) {
-      console.log(error)
+    } catch (error:any) {
+      console.log(error.response.data)
+      toast.error(error.response.data)
     }
   }
 
@@ -55,6 +59,7 @@ const Signup: FC<Props> = ({
 
   return (
     <div className="signup flex column center">
+      <ToastContainer/>
       <h1>{title} Sign up</h1>
       <input
         type="text"
