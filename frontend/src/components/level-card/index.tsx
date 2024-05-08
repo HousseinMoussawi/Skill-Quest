@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import './index.css'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 type Props = {
@@ -22,7 +23,7 @@ const handleLevelClick = () => {
 }
 
   return (
-    <div className="level-card flex between">
+    <div className="level-card flex between align-center border">
       <h1>{levelName}</h1>
       <button onClick={handleLevelClick}>
         {status === "UNLOCKED"
