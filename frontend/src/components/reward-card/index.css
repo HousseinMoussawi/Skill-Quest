@@ -1,0 +1,41 @@
+.reward-card{
+    width: 310px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #35689D07;
+}
+
+.reward-card img{
+    width: 100%;
+    height: 60%;
+    border-radius: 10px 10px 0 0;
+}
+
+.reward-card-info{
+    width: 100%;
+    height: 40%;
+    padding: 10px;
+}
+
+.reward-card-info>div{
+    width: 100%;
+}
+
+.buy-div{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgb(53, 104, 157,0.95);
+}
+
+.buy-div button{
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    color: var(--color-primary);
+    opacity: 1 !important;
+    font-size: 20px;
+    font-weight: 800;
+}
+
