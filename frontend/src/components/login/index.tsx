@@ -1,10 +1,11 @@
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { LoginWithGoogle } from "../login-with-google";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
-import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import {ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+
 
 
 type Props = {
@@ -43,8 +44,12 @@ const Login: FC<Props> = ({
         {
           const data = response.data
           localStorage.setItem('token',data.token)
-          console.log(response.data)
+          console.log(data)
           toast.success('Login successful')
+          if(data.role === 'CREATOR')
+          navigate('/create')
+          else
+          navigate('/progress')
         }
         else{
           console.log(response.data)
