@@ -42,7 +42,7 @@ const Signup: FC<Props> = ({ title, location }) => {
         const data = response.data;
         console.log(data);
         toast.success("Registration successful");
-        if (data.user.role === "CREATOR") navigate("/create-game");
+        if (data.role === "CREATOR") navigate("/create-game");
         else navigate("/progress");
       }
     } catch (error: any) {
