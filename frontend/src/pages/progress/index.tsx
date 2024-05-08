@@ -3,6 +3,8 @@ import './index.css'
 import { NavLink } from 'react-router-dom'
 import LevelCard from '../../components/level-card'
 
+
+
 type Props = {}
 
 const Progress = (props: Props) => {
