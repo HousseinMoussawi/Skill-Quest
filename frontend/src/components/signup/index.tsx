@@ -55,7 +55,7 @@ const Signup: FC<Props> = ({
 
   return (
     <div className="signup flex column center">
-      <h1>{title} Signup</h1>
+      <h1>{title} Sign up</h1>
       <input
         type="text"
         name=""
@@ -79,7 +79,7 @@ const Signup: FC<Props> = ({
         placeholder="Password"
         onChange={(e)=>{setPassword(e.target.value)}}
       />
-      <button onClick={signupButtonHandler}>Signup</button>
+      <button onClick={signupButtonHandler}>Sign up</button>
       <h5>
         already have an account? <span onClick={handleClick}>Login</span>
       </h5>
