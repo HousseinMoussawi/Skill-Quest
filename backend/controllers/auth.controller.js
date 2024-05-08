@@ -7,7 +7,10 @@ const register = async (req, res) => {
   const { email, password, username, role } = req.body;
   try {
     const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(401).send("User already exist");
+    if (existingUser) return res.status(401).send("a user with this email already exist");
+
+    const existingUserByUsername = await User.findOne({ username });
+    if (existingUserByUsername) return res.status(401).send("a user with this username already exist");
 
     console.log(password);
     const hashedPassword = await hashSync(password, 10);
