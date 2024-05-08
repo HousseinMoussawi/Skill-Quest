@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
 import NavbarProfile from "../navbar-profile";
 import './index.css'
-import Logo from '../../assets/final_logo.svg'
+import Logo from '../../assets/final_logo.png'
 import { useNavigate } from "react-router-dom";
 
 
@@ -23,7 +23,7 @@ const Navbar: FC<Props> = ({name,imageURL}) => {
 
   return (
     <div className="navbar flex evenly ">
-      <img src={Logo} alt="" onClick={handleLogoClick}/>
+      <img src={Logo} alt="" onClick={handleLogoClick} className="logo"/>
       <ul className="navbar-list flex evenly center">
         <li>
           <NavLink to="/games">Games</NavLink>
