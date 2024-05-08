@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 type Props = {
   status: string;
+  levelName: string,
+  gameName: string,
   levelId: string,
-  gameName: string
 };
 
-const LevelCard: FC<Props> = ({ status,levelId, gameName }) => {
+const LevelCard: FC<Props> = ({ status, levelName, gameName, levelId }) => {
     const [error,setError] = useState<string>('')
     const navigate =useNavigate()
 
@@ -21,8 +22,8 @@ const handleLevelClick = () => {
 }
 
   return (
-    <div className="level card">
-      <h1></h1>
+    <div className="level-card flex between">
+      <h1>{levelName}</h1>
       <button onClick={handleLevelClick}>
         {status === "UNLOCKED"
           ? "Play"
