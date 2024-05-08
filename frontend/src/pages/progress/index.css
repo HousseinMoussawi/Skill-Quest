@@ -56,6 +56,18 @@
     height: 100%;
     background-color: var(--color-primary);
     border-radius: 0 0 15px 15px;
+    gap: 30px;
+}
+
+.levels-container{
+    width: 100%;
+    gap: 30px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.levels-container::-webkit-scrollbar{
+    display: none;
 }
 
 .mode{
