@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 import { NavLink } from 'react-router-dom'
-
+import LevelCard from '../../components/level-card'
 
 type Props = {}
 
@@ -49,6 +49,16 @@ const Progress = (props: Props) => {
                  <h2>1adsaa sadf </h2>
                  </div>
               </div>
+
+              <div className='levels-container flex column align-center'>
+                <LevelCard gameName='Typing game' levelName='Level 1' levelId='1' status='COMPLETE' />
+                <LevelCard gameName='Typing game' levelName='Level 1' levelId='1' status='COMPLETE' />
+                <LevelCard gameName='Typing game' levelName='Level 1' levelId='1' status='COMPLETE' />
+                <LevelCard gameName='Typing game' levelName='Level 1' levelId='1' status='COMPLETE' />
+                <LevelCard gameName='Typing game' levelName='Level 1' levelId='1' status='COMPLETE' />
+                <LevelCard gameName='Typing game' levelName='Level 1' levelId='1' status='COMPLETE' />
+              </div>
+
             </div>
             
         </div>
