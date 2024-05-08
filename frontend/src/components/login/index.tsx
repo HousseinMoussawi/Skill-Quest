@@ -2,21 +2,16 @@ import React, { FC, useState } from "react";
 import { LoginWithGoogle } from "../login-with-google";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import {ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
-
-
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type Props = {
   title: string;
   location: string;
 };
 
-const Login: FC<Props> = ({
-  title,
-  location,
-}) => {
+const Login: FC<Props> = ({ title, location }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -26,41 +21,33 @@ const Login: FC<Props> = ({
     navigate(location);
   };
 
-  const loginButtonHandler = async()=>{
-
+  const loginButtonHandler = async () => {
     try {
-
       const body = {
         email: email,
-        password:password,
-        role: title.toUpperCase()
-      }
+        password: password,
+        role: title.toUpperCase(),
+      };
 
-     
       const response = await axios.post(
-        'http://localhost:3001/auth/login',body
-      )
-      if(response.status==200)
-        {
-          const data = response.data
-          localStorage.setItem('token',data.token)
-          console.log(data)
-          toast.success('Login successful')
-          if(data.role === 'CREATOR')
-          navigate('/create')
-          else
-          navigate('/progress')
-        }
-        else{
-          console.log(response.data)
-        }
-
-      
-    } catch (error:any) {
-      console.log(error.response.data)
-      toast.error(error.response.data)
+        "http://localhost:3001/auth/login",
+        body
+      );
+      if (response.status == 200) {
+        const data = response.data;
+        localStorage.setItem("token", data.token);
+        console.log(data);
+        toast.success("Login successful");
+        if (data.user.role === "CREATOR") navigate("/create-game");
+        else navigate("/progress");
+      } else {
+        console.log(response.data);
+      }
+    } catch (error: any) {
+      console.log(error.response.data);
+      toast.error(error.response.data);
     }
-  }
+  };
 
   return (
     <div className="login flex column center">
