@@ -23,6 +23,9 @@ import CreateLevel from "./pages/create-level";
 import Create from "./pages/create";
 
 function App() {
+
+  const isAuthorized:boolean =!!localStorage.getItem('token')
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -45,7 +48,7 @@ function App() {
 
           <Route path="/" element={<Home />}></Route>
 
-          <Route path="" element={<Layout />}>
+          <Route path="" element={<Layout isAuthorized={isAuthorized}/>}>
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="/creators" element={<Creators />}></Route>
             <Route path="/create-game" element={<CreateGame />}></Route>
