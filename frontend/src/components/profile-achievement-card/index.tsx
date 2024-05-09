@@ -8,7 +8,7 @@ const ProfileAchievementsCard:FC<Props> = () => {
   return (
     <div className='profile-achievements-card flex align-center between'>
         <img src={Image} alt="" />
-        <p>jafjasdfjhashasdhasdfasdf as asdfasf asf hsadfhjasd</p>
+        <p>Hello how are you my most butter chicken man</p>
     </div>
   )
 }

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import './index.css'
 
 type Props = {}
 
-const PlayerGames = (props: Props) => {
+const PlayerGames:FC<Props> = ({}) => {
   return (
-    <div>PlayerGames</div>
+    <div className='player-games'>
+
+    </div>
   )
 }
 
