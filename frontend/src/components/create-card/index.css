@@ -1,7 +1,7 @@
 .create-card{
     width:45%;
     height: 40%;
-    border-radius:10%;
+    border-radius:15px;
     background-color: #F1F4F8;
     color: var(--color-primary);
     text-align: center;

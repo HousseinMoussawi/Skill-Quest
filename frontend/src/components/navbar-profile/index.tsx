@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import "./index.css";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -11,9 +12,16 @@ type Props = {
 const NavbarProfile: FC<Props> = ({ name, imageURl }) => {
   const [hidden, setHidden] = useState<boolean>(true);
 
+  const navigate = useNavigate()
+
   const toggleList = () => {
     setHidden(!hidden);
   };
+
+  const  handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/auth')
+  }
 
   return (
     <div className="profile-div flex column">
@@ -32,7 +40,7 @@ const NavbarProfile: FC<Props> = ({ name, imageURl }) => {
           <li className="flex center">
             <NavLink to="/achievements">Achievements</NavLink>
           </li>
-          <li className="flex center">Logout</li>
+          <li className="flex center" onClick={handleLogout}>Logout</li>
         </ul>
       </div>
     </div>
