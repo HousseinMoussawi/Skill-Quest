@@ -1,0 +1,39 @@
+.profile-info{
+    width: 58%;
+    height: 50%;
+    background-color: #35689D07;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.profile-info-titles{
+    color: var(--color-primary);
+    width: 30%;
+
+}
+
+.profile-info-titles button{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.profile-info-values{
+    width: 50%;
+}
+
+.profile-info-values h3{
+    font-weight: 100;
+    color: var(--color-third);
+}
+
+.profile-info-skills{
+    width: 100%;
+}
+
+.empty-div{
+    height: 40px;
+}
