@@ -10,7 +10,7 @@ const ProfileImage: FC<Props> = ({name,imageURL}) => {
   return (
     <div className='profile-image flex column align center evenly'> 
       <img src={imageURL} alt="" />
-      <h1>{name}</h1>
+      <h1>#{name}</h1>
     </div>
   )
 }
