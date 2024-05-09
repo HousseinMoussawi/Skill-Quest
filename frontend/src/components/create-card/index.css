@@ -1,0 +1,11 @@
+.create-card{
+    width:45%;
+    height: 60%;
+    border-radius:10%;
+    background-color: #F1F4F8;
+    color: var(--color-primary);
+}
+
+.create-card .active{
+    border: 3px solid var(--color-primary)
+}
