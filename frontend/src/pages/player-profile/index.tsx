@@ -4,8 +4,8 @@ import ProfileAchievements from "../../components/profile-achievements";
 import ProfileImage from "../../components/profile-image";
 import ProfileInfo from "../../components/profile-info";
 import PlayerGames from "../../components/player-games";
-import CreatorGames from "../../components/creator-games";
 import Image from "../../assets/login-image.png";
+import ProfileGames from "../../components/profile-games";
 
 type Props = {};
 
@@ -23,7 +23,7 @@ const PlayerProfile = (props: Props) => {
           favorite="Typing game"
           skills={["typing", "english", "coding"]}
         />
-        <PlayerGames />
+        <ProfileGames user="PLAYER"/>
       </div>
       
     </div>

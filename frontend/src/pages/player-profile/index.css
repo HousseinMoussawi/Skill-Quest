@@ -1,0 +1,15 @@
+.profile{
+    width: 100%;
+    height: 90vh;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.left-div{
+    height: 100%;
+    width: 40%;
+}
+.right-div{
+    height: 100%;
+    width: 58%;
+}
