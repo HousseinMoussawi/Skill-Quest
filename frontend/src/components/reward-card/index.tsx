@@ -15,7 +15,7 @@ const RewardCard: FC<Props> = () => {
           </div>
 
         </div>
-        <div className='buy-div flex center absolute'>
+        <div className='buy-div flex hidden center absolute'>
                 <button>Buy</button>
           </div>
     </div>

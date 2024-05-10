@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
+import { MouseEventHandler } from 'react'
 import './index.css'
 
 type Props = {
     type:string,
     text:string,
-    handleCreateClick: () => void,
+    handleCreateClick: MouseEventHandler<HTMLDivElement>,
     isSelected:boolean,
 }
 

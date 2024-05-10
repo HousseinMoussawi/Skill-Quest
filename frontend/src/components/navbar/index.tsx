@@ -35,7 +35,7 @@ const Navbar: FC<Props> = ({name,imageURL}) => {
           <NavLink to="/creators">Creators</NavLink>
         </li>
         <li>
-          <NavLink to="/create-game">Create</NavLink>
+          <NavLink to="/create">Create</NavLink>
         </li>
         <li>
           <NavLink to="/rewards">Rewards</NavLink>
