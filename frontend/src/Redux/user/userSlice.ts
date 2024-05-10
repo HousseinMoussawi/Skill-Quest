@@ -32,7 +32,7 @@ interface LevelStat {
   }
   
   interface Game {
-    game_id: string;
+    game_id: number;
     game_name: string;
   }
   
@@ -64,3 +64,24 @@ interface LevelStat {
     loading: boolean;
     error: string | null;
   }
+
+  const initialState:UserState = {
+    fullName: '',
+    username: '',
+    email: '',
+    password: '',
+    profilePictureURL: '',
+    role: 'PLAYER',
+    userAchievements: [],
+    userRewards: [],
+    skills: [],
+    favoriteGame: {
+        game_id:0,
+        game_name:'',
+    },
+    userGames: [],
+    balance: 0,
+    loading: false, 
+    error: null, 
+  };
+  
