@@ -47,3 +47,20 @@ interface LevelStat {
   interface Skill {
     name: string;
   }
+
+  interface UserState {
+    fullName: string;
+    username: string;
+    email: string;
+    password: string;
+    profilePictureURL: string;
+    role: string;
+    userAchievements: Achievement[];
+    userRewards: Reward[];
+    skills: Skill[];
+    favoriteGame: Game;
+    userGames: UserGame[];
+    balance: number;
+    loading: boolean;
+    error: string | null;
+  }
