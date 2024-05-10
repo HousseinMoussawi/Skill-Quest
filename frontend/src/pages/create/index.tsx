@@ -12,8 +12,8 @@ const Create: FC<Props> = () => {
 
   const navigate = useNavigate()
 
-  const handleDivClick = (div: string):void => {
-    setSelectedDiv(div);
+  const handleDivClick = (a: string):void => {
+    setSelectedDiv(a);
   };
 
   const handleNextButtonClick = () => {
