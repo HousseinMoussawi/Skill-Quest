@@ -21,6 +21,7 @@ import PlayerSignup from "./pages/auth/player-signup";
 import Layout from "./pages/layout";
 import CreateLevel from "./pages/create-level";
 import Create from "./pages/create";
+import TypingGame from "./pages/typing-game";
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
               path="/achievements"
               element={<PlayerAchievements />}
             ></Route>
+            <Route path="/typing-game" element={<TypingGame/>}></Route>
             <Route path="/profile" element={<PlayerProfile />}></Route>
             <Route path="/progress" element={<Progress />}></Route>
             <Route path="/rewards" element={<Rewards />}></Route>
