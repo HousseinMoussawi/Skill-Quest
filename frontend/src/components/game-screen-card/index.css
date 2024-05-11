@@ -1,0 +1,5 @@
+.game-screen-card{
+    width: 95%;
+    height: 95%;
+    border: 5px solid var(--color-primary);
+}
