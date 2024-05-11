@@ -35,6 +35,11 @@ const gameLevelSchema = new mongoose.Schema({
     type: [levelStatSchema],
     default: [],
   },
+
+  level_text:{
+    type:[String],
+    default:[]
+  }
 });
 
 const gameStatSchema = new mongoose.Schema({

@@ -21,6 +21,11 @@ const levelSchema = new mongoose.Schema({
     default: LEVEL_DIFFICULTY.BEGINNER,
   },
 
+  text:{
+    type:[String],
+    default :[]
+  },
+
   status: {
     type: String,
     enum: Object.values(LEVEL_STATUS),
