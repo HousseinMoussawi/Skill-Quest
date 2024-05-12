@@ -180,3 +180,11 @@ class GameScene extends Phaser.Scene {
         align: "right",
       })
       .setOrigin(1, 0);
+
+      this.startButton = this.add
+      .sprite(this.game.canvas.width / 2, this.game.canvas.height / 2, "start")
+      .setInteractive()
+      .setOrigin(0.5)
+      .setScale(0.5);
+    this.startButton.on("pointerdown", this.startGame, this);
+  }
