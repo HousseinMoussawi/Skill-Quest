@@ -155,3 +155,10 @@ class GameScene extends Phaser.Scene {
           }
         });
     
+        this.scoreText = this.add
+      .text(this.game.canvas.width - 150, 20, "", {
+        fontFamily: "Minecraft",
+        fontSize: "24px",
+        color: "#fff",
+      })
+      .setOrigin(1, 0);
