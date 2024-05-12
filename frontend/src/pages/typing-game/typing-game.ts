@@ -1,0 +1,18 @@
+import "./index.css";
+import Phaser from "phaser";
+import Image from "./assets/background.jpg";
+import Heart from "./assets/heart.png";
+import Start from "./assets/start -button.png";
+import Restart from "./assets/restart.png";
+
+class WinScene extends Phaser.Scene {
+  restartButton!: Phaser.GameObjects.Sprite;
+
+  constructor() {
+    super("win-scene");
+  }
+
+  init(data: { score: number }) {
+    const score = data.score;
+    this.add.text(this.game.canvas.width/2, this.game.canvas.height/2-50, `Your score: ${score}`, { fontSize: '32px', color: '#fff' }).setOrigin(0.5);
+  }
