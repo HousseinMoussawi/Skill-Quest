@@ -1,38 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GameScreenCard from "../../components/game-screen-card";
 import "./index.css";
-import Phaser from "phaser";
+import Config from './typing-game'
+
 
 type Props = {};
-
 const TypingGame = (props: Props) => {
-  useEffect(() => {
-    const config: Phaser.Types.Core.GameConfig = {
-      type: Phaser.WEBGL,
-      parent: "canvas",
-      width: "99%",
-      height: "99%",
-      scene:{
-        preload:preload,
-        create:create,
-        update:update,
-      },
-      physics:{
-        default:'arcade',
-        arcade:{
-            gravity:{ x: 0, y: 0 } 
-        }
-      }
-    };
 
-    new Phaser.Game(config);
+  React.useEffect(() => {
+    const game = new Phaser.Game(Config);
+    
+    return () => {
+      game.destroy(true);
+    };
   }, []);
 
   return (
-    <div className="typing-game flex center ">
+    <div className="typing-game flex justify-center ">
       <GameScreenCard />
     </div>
   );
 };
 
 export default TypingGame;
+  
