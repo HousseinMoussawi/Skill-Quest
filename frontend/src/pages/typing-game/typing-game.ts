@@ -309,3 +309,19 @@ class GameScene extends Phaser.Scene {
         this.scene.start("loss-scene", { score: this.score });
       }
     }
+
+    const config = {
+        type: Phaser.WEBGL,
+        width: "100%",
+        height: "100%",
+        parent: "canvas",
+        physics: {
+          default: "arcade",
+          arcade: {
+            gravity: { x: 0, y: 0 },
+          },
+        },
+        scene: [GameScene, WinScene, LossScene],
+      };
+      
+      export default config;
