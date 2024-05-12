@@ -5,7 +5,7 @@ type Props = {}
 
 const GameScreenCard = (props: Props) => {
   return (
-    <div className='game-screen-card' id='canvas'>
+    <div className='game-screen-card border' id='canvas'>
 
     </div>
   )

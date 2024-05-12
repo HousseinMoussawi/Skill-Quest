@@ -12,7 +12,7 @@ type Props = {
 const SearchBar: FC<Props> = ({firstFilter,secondFilter,thirdFilter,placeHolder}) => {
   return (
     <div className='search-bar flex between align-center '>
-        <div className='filters-div flex around'>
+        <div className='filters-div flex between'>
             <h4 className='active'>All</h4>
             <h4>{firstFilter}</h4>
             <h4>{secondFilter}</h4>

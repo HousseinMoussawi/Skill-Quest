@@ -2,3 +2,8 @@
     width: 100%;
     height: 90vh;
 }
+@font-face {
+    font-family: 'Minecraft';
+    src: url('./assets/Minecraft.ttf') format('truetype');
+  }
+  

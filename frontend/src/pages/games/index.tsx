@@ -20,7 +20,6 @@ const Games = (props: Props) => {
       <GameCard/>
       <GameCard/>
       <GameCard/>
-      <GameCard/>
     </div>
   )
 }
