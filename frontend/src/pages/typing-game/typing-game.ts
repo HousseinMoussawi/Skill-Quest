@@ -249,3 +249,14 @@ class GameScene extends Phaser.Scene {
           this.endGame();
         }
       }
+      update() {
+        this.words.forEach((word) => {
+          if (this.typedWord === word.text.toLowerCase()) {
+            word.destroy();
+          }
+    
+          this.writtenWordText.setText(`${this.typedWord}`)
+        });
+      }
+
+      
