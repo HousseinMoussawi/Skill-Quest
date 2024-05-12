@@ -131,3 +131,18 @@ class GameScene extends Phaser.Scene {
         this.load.image("start", Start);
         this.load.spritesheet('explosion')
       }
+
+      create() {
+        this.add.image(0, 0, "bg").setOrigin(0, 0);
+    
+        Phaser.Utils.Array.Shuffle(this.wordArray);
+    
+        this.input.keyboard?.on("keydown", (event: KeyboardEvent) => {
+          const character = event.key.toLowerCase();
+          if (!(character === " ") && !(character === 'enter')) this.typedWord += character;
+          else {
+            this.typedWord = "";
+            this.attempts++;
+            this.updateScore();
+
+            
