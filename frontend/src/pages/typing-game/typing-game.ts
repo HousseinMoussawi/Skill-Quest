@@ -171,3 +171,12 @@ class GameScene extends Phaser.Scene {
         align: "right",
       })
       .setOrigin(1, 0);
+
+      this.writtenWordText = this.add
+      .text(this.game.canvas.width/2, this.game.canvas.height-50, "", {
+        fontFamily: "Minecraft",
+        fontSize: "24px",
+        color: "#ffffff",
+        align: "right",
+      })
+      .setOrigin(1, 0);
