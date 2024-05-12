@@ -218,3 +218,13 @@ class GameScene extends Phaser.Scene {
         heart.setScale(0.18);
         this.hearts.push(heart);
       }
+
+      for (let i = 0; i < this.wordArray.length; i++) {
+        this.time.delayedCall(delay, () => {
+          const word = this.addFallingWord(this.wordArray[i]);
+          this.physics.add.collider(word, platform, () => {
+            this.wordReachedBottom(word);
+          });
+        });
+        delay += wordDelay;
+      }
