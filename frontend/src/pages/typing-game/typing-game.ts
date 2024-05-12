@@ -90,3 +90,21 @@ class LossScene extends Phaser.Scene {
     this.scene.start("scene-game");
   }
 }
+
+class GameScene extends Phaser.Scene {
+    words: Phaser.GameObjects.Text[];
+    wordArray: string[];
+    timer: number;
+    timerText!: Phaser.GameObjects.Text;
+    hearts: Phaser.GameObjects.Image[];
+    playerLives: number;
+    win: boolean;
+    loss: boolean;
+    startButton!: Phaser.GameObjects.Sprite;
+    gameStarted: boolean;
+    score: number;
+    scoreText!: Phaser.GameObjects.Text;
+    typedWord: string;
+    attempts: number;
+    writtenWordText!: Phaser.GameObjects.Text
+    mistake:number
