@@ -162,3 +162,12 @@ class GameScene extends Phaser.Scene {
         color: "#fff",
       })
       .setOrigin(1, 0);
+
+      this.timerText = this.add
+      .text(this.game.canvas.width - 20, 20, "", {
+        fontFamily: "Minecraft",
+        fontSize: "24px",
+        color: "#ffffff",
+        align: "right",
+      })
+      .setOrigin(1, 0);
