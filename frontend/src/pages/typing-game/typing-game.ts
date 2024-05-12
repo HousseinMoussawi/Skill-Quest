@@ -145,4 +145,13 @@ class GameScene extends Phaser.Scene {
             this.attempts++;
             this.updateScore();
 
-            
+            this.words.forEach((word) => {
+                if (!(this.typedWord === word.text.toLowerCase())) {
+                    this.mistake++
+                }
+              });
+    
+    
+          }
+        });
+    
