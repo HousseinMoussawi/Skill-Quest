@@ -259,4 +259,19 @@ class GameScene extends Phaser.Scene {
         });
       }
 
-      
+      addFallingWord(wordText: string) {
+        const word = this.add
+          .text(Phaser.Math.Between(100, 800), 0, wordText, {
+            fontFamily: "Minecraft",
+            fontSize: "24px",
+            color: "#ffffff",
+          })
+          .setOrigin(0.5, 0);
+    
+        this.physics.add.existing(word);
+        const body = word.body as Phaser.Physics.Arcade.Body;
+        body.setGravityY(50);
+        this.words.push(word);
+    
+        return word;
+      }
