@@ -16,3 +16,17 @@ class WinScene extends Phaser.Scene {
     const score = data.score;
     this.add.text(this.game.canvas.width/2, this.game.canvas.height/2-50, `Your score: ${score}`, { fontSize: '32px', color: '#fff' }).setOrigin(0.5);
   }
+
+  preload() {
+    this.load.image("restart", Restart);
+  }
+
+  create() {
+    this.add
+      .text(
+        this.game.canvas.width / 2,
+        this.game.canvas.height / 2,
+        "Congratulations! You win!",
+        { fontSize: "32px", color: "#fff" }
+      )
+      .setOrigin(0.5);
