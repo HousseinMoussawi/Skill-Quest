@@ -108,3 +108,19 @@ class GameScene extends Phaser.Scene {
     attempts: number;
     writtenWordText!: Phaser.GameObjects.Text
     mistake:number
+
+    constructor() {
+        super("scene-game");
+        this.words = [];
+        this.wordArray = ["apple", "banana", "cherry", "orange", "grape"];
+        this.timer = 60;
+        this.playerLives = 3;
+        this.hearts = [];
+        this.win = false;
+        this.loss = false;
+        this.gameStarted = false;
+        this.score = 100;
+        this.typedWord = "";
+        this.attempts = 0;
+        this.mistake = 0;
+      }
