@@ -46,3 +46,14 @@ class WinScene extends Phaser.Scene {
     this.scene.start("scene-game");
   }
 }
+
+class LossScene extends Phaser.Scene {
+    restartButton!: Phaser.GameObjects.Sprite;
+  
+    constructor() {
+      super("loss-scene");
+    }
+  
+    init(data: { score: number }) {
+      const score = data.score;
+      this.add.text(this.game.canvas.width/2, this.game.canvas.height/2-50, `Your score: ${score}`, { fontSize: '32px', color: '#fff' }).setOrigin(0.5);
