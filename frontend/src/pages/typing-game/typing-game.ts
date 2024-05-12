@@ -212,3 +212,9 @@ class GameScene extends Phaser.Scene {
       .staticSprite(this.game.canvas.width / 2, this.game.canvas.height, "")
       .setSize(this.game.canvas.width, 1)
       .setVisible(false);
+
+      for (let i = 0; i < this.playerLives; i++) {
+        const heart = this.add.sprite(50 + i * 40, 30, "heart").setOrigin(0.5);
+        heart.setScale(0.18);
+        this.hearts.push(heart);
+      }
