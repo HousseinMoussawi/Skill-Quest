@@ -203,3 +203,12 @@ class GameScene extends Phaser.Scene {
       this.initiateGameLogic();
     }
   }
+
+  initiateGameLogic() {
+    const wordDelay = 1000;
+    let delay = 2500;
+
+    const platform = this.physics.add
+      .staticSprite(this.game.canvas.width / 2, this.game.canvas.height, "")
+      .setSize(this.game.canvas.width, 1)
+      .setVisible(false);
