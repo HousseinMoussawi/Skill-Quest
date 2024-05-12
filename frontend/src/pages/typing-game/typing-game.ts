@@ -287,3 +287,14 @@ class GameScene extends Phaser.Scene {
           }
         }
       }
+
+      updateScore() {
+        this.scoreText.setText(`Score: ${this.score}`);
+      }
+    
+      endGame() {
+        if (this.playerLives === 0) {
+          this.loss = true;
+          this.loadLossScene();
+        }
+      }
