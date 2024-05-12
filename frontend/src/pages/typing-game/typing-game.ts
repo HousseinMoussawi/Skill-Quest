@@ -228,7 +228,7 @@ class GameScene extends Phaser.Scene {
         });
         delay += wordDelay;
       }
-      
+
       this.time.addEvent({
         delay: 1000,
         callback: this.updateTimer,
@@ -238,3 +238,14 @@ class GameScene extends Phaser.Scene {
   
       this.startButton.destroy();
     }
+
+    wordReachedBottom(word: Phaser.GameObjects.Text) {
+        word.destroy();
+    
+        if (this.playerLives > 0) {
+          this.playerLives--;
+          this.hearts[this.playerLives].destroy();
+        } else {
+          this.endGame();
+        }
+      }
