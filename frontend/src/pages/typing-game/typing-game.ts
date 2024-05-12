@@ -298,3 +298,14 @@ class GameScene extends Phaser.Scene {
           this.loadLossScene();
         }
       }
+
+      loadWinScene() {
+        this.score -=this.mistake
+        this.scene.start("win-scene", { score: this.score });
+      }
+    
+      loadLossScene() {
+        this.score = 0
+        this.scene.start("loss-scene", { score: this.score });
+      }
+    }
