@@ -73,3 +73,20 @@ class LossScene extends Phaser.Scene {
           { fontSize: "32px", color: "#fff" }
         )
         .setOrigin(0.5);
+
+        this.restartButton = this.add
+      .sprite(
+        this.game.canvas.width / 2,
+        this.game.canvas.height / 2 + 50,
+        "restart"
+      )
+      .setInteractive()
+      .setOrigin(0.5, 0.5)
+      .setScale(0.2);
+    this.restartButton.on("pointerdown", this.restart, this);
+  }
+
+  restart() {
+    this.scene.start("scene-game");
+  }
+}
