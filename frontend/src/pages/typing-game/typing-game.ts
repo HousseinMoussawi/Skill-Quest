@@ -275,3 +275,15 @@ class GameScene extends Phaser.Scene {
     
         return word;
       }
+
+      updateTimer() {
+        if (this.gameStarted && !(this.playerLives === 0)) {
+          this.timer--;
+          this.timerText.setText(`Time: ${this.timer}s`);
+    
+          if (this.timer <= 0) {
+            this.timer = 0;
+            this.loadWinScene();
+          }
+        }
+      }
