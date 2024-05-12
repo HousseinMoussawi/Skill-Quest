@@ -228,3 +228,13 @@ class GameScene extends Phaser.Scene {
         });
         delay += wordDelay;
       }
+      
+      this.time.addEvent({
+        delay: 1000,
+        callback: this.updateTimer,
+        callbackScope: this,
+        loop: true,
+      });
+  
+      this.startButton.destroy();
+    }
