@@ -124,3 +124,10 @@ class GameScene extends Phaser.Scene {
         this.attempts = 0;
         this.mistake = 0;
       }
+
+      preload() {
+        this.load.image("bg", Image);
+        this.load.image("heart", Heart);
+        this.load.image("start", Start);
+        this.load.spritesheet('explosion')
+      }
