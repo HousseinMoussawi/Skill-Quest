@@ -188,3 +188,18 @@ class GameScene extends Phaser.Scene {
       .setScale(0.5);
     this.startButton.on("pointerdown", this.startGame, this);
   }
+
+  startGame() {
+    this.loss = true;
+    this.playerLives = 3;
+    this.gameStarted = false;
+    this.timer = 60;
+    this.attempts = 0;
+    this.score = 100;
+
+    if (!this.gameStarted) {
+      this.gameStarted = true;
+
+      this.initiateGameLogic();
+    }
+  }
