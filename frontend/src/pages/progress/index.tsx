@@ -9,10 +9,10 @@ type Props = {}
 
 const Progress = (props: Props) => {
   return (
-    <div className='whole-screen flex center'> 
+    <div className='whole-screen flex center'>
         <div className='progress-div'>
           <ul className='games-list flex between'>
-            <li><NavLink to='asdadd'>Word Invaders</NavLink></li>
+            <li><NavLink to='asdadd'>Typing Invaders</NavLink></li>
             <li><NavLink to='asdadd'>Shortcut King</NavLink></li>
             <li><NavLink to='asdadd'>English</NavLink></li>
             <li><NavLink to='/progress/'>French</NavLink></li>

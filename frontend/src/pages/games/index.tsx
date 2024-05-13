@@ -9,8 +9,8 @@ type Props = {}
 
 const Games = (props: Props) => {
   return (
-    <div className='games center flex'>
-      <SearchBar placeHolder='Search for games' firstFilter='Official games' secondFilter='Creator games' thirdFilter=''/>
+    <div className='games evenly align-center flex'>
+      <SearchBar placeHolder='Search for games' firstFilter='Typing Games' secondFilter='Language Games' thirdFilter=''/>
       
       <GameCard/>
       <GameCard/>

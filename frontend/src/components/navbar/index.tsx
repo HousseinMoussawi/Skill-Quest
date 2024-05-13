@@ -22,7 +22,7 @@ const Navbar: FC<Props> = ({name,imageURL}) => {
   }
 
   return (
-    <div className="navbar flex evenly ">
+    <div className="navbar flex between">
       <img src={Logo} alt="" onClick={handleLogoClick} className="logo"/>
       <ul className="navbar-list flex evenly center">
         <li>

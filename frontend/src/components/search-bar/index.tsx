@@ -17,6 +17,8 @@ const SearchBar: FC<Props> = ({firstFilter,secondFilter,thirdFilter,placeHolder}
             <h4>{firstFilter}</h4>
             <h4>{secondFilter}</h4>
             <h4>{thirdFilter}</h4>
+            <h4></h4>
+            <h4></h4>
         </div>
         <input type="text" placeholder={placeHolder} />
         <button>Search</button>

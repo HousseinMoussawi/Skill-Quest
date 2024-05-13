@@ -54,7 +54,7 @@ const Signup: FC<Props> = ({ title, location }) => {
   return (
     <div className="signup flex column center">
       <ToastContainer />
-      <h1>{title} Sign up</h1>
+      <h1>{title} Sign Up</h1>
       <input
         type="text"
         name=""
@@ -82,9 +82,9 @@ const Signup: FC<Props> = ({ title, location }) => {
           setPassword(e.target.value);
         }}
       />
-      <button onClick={signupButtonHandler}>Sign up</button>
+      <button onClick={signupButtonHandler}>Sign Up</button>
       <h5>
-        already have an account? <span onClick={handleClick}>Login</span>
+        Already have an account? <span onClick={handleClick}>Login</span>
       </h5>
       <h2>Or</h2>
       <LoginWithGoogle />

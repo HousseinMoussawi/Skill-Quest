@@ -19,7 +19,7 @@ const Layout: FC<Props> = ({isAuthorized}) => {
   }, [isAuthorized, navigate]);
 
   return (
-    <div>
+    <div className='flex center column'>
         <Navbar name="Houssein" imageURL="aadqqdaw"/>
         <Outlet/>
     </div>

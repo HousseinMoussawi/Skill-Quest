@@ -17,6 +17,7 @@
     width: 80%;
     float: right;
     height: 60px;
+    font-size: 1.3rem;
 }
 
 .games-list li {
@@ -73,6 +74,7 @@
 .mode{
     width: 20%;
     height: 100%;
+    font-size: 1.3rem;
 }
 
 

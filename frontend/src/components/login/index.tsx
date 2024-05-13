@@ -73,7 +73,7 @@ const Login: FC<Props> = ({ title, location }) => {
       />
       <button onClick={loginButtonHandler}>Login</button>
       <h5>
-        don't have an account? <span onClick={handleClick}>Sign up</span>
+        Don't have an account? <span onClick={handleClick}>Sign Up</span>
       </h5>
       <h2>Or</h2>
       <LoginWithGoogle />

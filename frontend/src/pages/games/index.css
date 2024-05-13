@@ -1,6 +1,7 @@
 .games{
-    width: 100%;
+    width: 90%;
+    max-width: 1340px;
     height: 90vh;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 40px;
 }
