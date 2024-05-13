@@ -98,6 +98,11 @@
     align-items: center;
     height: 40px;
     border-radius: 5px;
+    -webkit-user-select: none;
+}
+
+.difficulty-div:hover{
+    cursor:default;
 }
 
 .difficulty-div h4.active{
