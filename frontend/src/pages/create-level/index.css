@@ -1,0 +1,109 @@
+.create-level{
+    width: 100%;
+    height: 90vh;
+}
+
+.create-level-div{
+    width: 90%;
+    height: 70%;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color:#35689D20 ;
+}
+
+.create-level-div h1{
+    color: white;
+    width: 30%;
+}
+
+.game-select-div{
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    background-color: var(--color-primary);
+}
+
+.game-select-div select{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid var(--color-third);
+    color: white;
+    background-color: var(--color-primary);
+    text-align: center;
+    font-size: 20px;
+}
+
+.select-wrapper{
+    border-radius: 30px;
+    width: 50%;
+}
+
+.level-info-div{
+    width: 100%;
+    height: 80%;
+    color: var(--color-primary);
+}
+
+.level-text{
+    width: 100%;
+    height: auto;
+}
+
+.level-text textarea{
+    width: 50%;
+    resize: none;
+    height: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.level-text textarea::placeholder{
+    color: var(--color-third);
+}
+
+.level-text textarea:focus{
+    outline: 2px solid var(--color-primary);
+}
+
+.upload-div{
+    width: 100%;
+}
+
+.upload-btn-div{
+    width: 50%;
+}
+
+.difficulty-container{
+    width:100%
+}
+
+.difficulty-div{
+    width: 50%;
+}
+
+.upload-btn-div h3{
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.difficulty-div h4{
+    background-color: white;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.difficulty-div h4.active{
+    border: 2px solid var(--color-primary);
+}
+
+.level-info-div h2{
+    width: 30%;
+}

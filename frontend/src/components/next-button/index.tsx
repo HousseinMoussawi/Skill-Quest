@@ -8,7 +8,7 @@ type Props = {
 const NextButton:FC<Props> = ({handleNextClick}) => {
   return (
     <div className='next-card absolute flex center'>
-        <button>Next</button>
+        <button onClick={handleNextClick}>Next</button>
     </div>
   )
 }
