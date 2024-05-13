@@ -26,6 +26,11 @@ const levelSchema = new mongoose.Schema({
     default :[]
   },
 
+  backgroundImageURL:{
+    type:String,
+    default:'',
+  },
+
   status: {
     type: String,
     enum: Object.values(LEVEL_STATUS),
