@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, MouseEventHandler, useState } from 'react'
 import './index.css'
 
 
@@ -7,16 +7,21 @@ type Props = {
     secondFilter:string,
     placeHolder:string,
     thirdFilter:string,
+    handleClickedFirstFilter: MouseEventHandler<HTMLDivElement>,
+    handleClickedAllFilter: MouseEventHandler<HTMLDivElement>,
+    handleClickedSecondFilter: MouseEventHandler<HTMLDivElement>,
+    handleClickedThirdFilter: MouseEventHandler<HTMLDivElement>,
+    isClicked:string,
 }
 
-const SearchBar: FC<Props> = ({firstFilter,secondFilter,thirdFilter,placeHolder}) => {
+const SearchBar: FC<Props> = ({firstFilter,secondFilter,thirdFilter,placeHolder,handleClickedAllFilter,handleClickedFirstFilter,handleClickedSecondFilter,handleClickedThirdFilter,isClicked}) => {
   return (
     <div className='search-bar flex between align-center '>
         <div className='filters-div flex between'>
-            <h4 className='active'>All</h4>
-            <h4>{firstFilter}</h4>
-            <h4>{secondFilter}</h4>
-            <h4>{thirdFilter}</h4>
+            <h4 className={`${isClicked==='All'?'active':''}`} onClick={handleClickedAllFilter}>All</h4>
+            <h4 className={`${isClicked ===firstFilter?'active':''}`} onClick={handleClickedFirstFilter}>{firstFilter}</h4>
+            <h4 className={`${isClicked===secondFilter?'active':''}`} onClick={handleClickedSecondFilter}>{secondFilter}</h4>
+            <h4 className={`${isClicked===thirdFilter?'active':''}`} onClick={handleClickedThirdFilter}>{thirdFilter}</h4>
             <h4></h4>
             <h4></h4>
         </div>
