@@ -3,22 +3,25 @@ import "./index.css";
 import NextButton from "../../components/next-button";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const CreateLevel: FC<Props> = ({}) => {
   const [difficulty, setDifficulty] = useState<string>("");
   const [games, setGames] = useState<any[]>([]);
-  const [text,setText] = useState<string>('')
+  const [text, setText] = useState<string>("");
   const [gameId, setGameId] = useState<string>("");
-
+  const token = localStorage.getItem("token");
+  const [file, setFile] = useState<any>()
+  const navigate = useNavigate()
+ 
   useEffect(() => {
     getGames();
   }, []);
 
   const getGames = async () => {
     try {
-      const token = localStorage.getItem("token");
       const response = await axios.get("http://localhost:3001/games", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -31,8 +34,41 @@ const CreateLevel: FC<Props> = ({}) => {
     }
   };
 
+  const handleDifficultyClick = (value: string) => {
+    setDifficulty(value);
+  };
 
- 
+  const createLevel = async () => {
+    const wordsArray = text.split(" ");
+
+    const formData = new FormData()
+    formData.append('image',file)
+    formData.append('difficulty',difficulty)
+    formData.append('text',JSON.stringify(wordsArray))
+    console.log(wordsArray)
+
+    
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/games/level/${gameId}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+          },
+        }
+      );
+      const data = response.data
+      if(response.status ===200 )
+        {
+          navigate('/profile')
+        }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const asdasd = () => {};
 
   return (
@@ -50,9 +86,7 @@ const CreateLevel: FC<Props> = ({}) => {
               <option value="">Select Game</option>
               {games.length > 0 &&
                 games.map((game) => (
-                  <option value={game._id}>
-                    {game.name}
-                  </option>
+                  <option key={game._id} value={game._id}>{game.name}</option>
                 ))}
             </select>
           </div>
@@ -61,7 +95,9 @@ const CreateLevel: FC<Props> = ({}) => {
           <div className="level-text flex around">
             <h2>Level text</h2>
             <textarea
-            onChange={}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
               name=""
               id=""
               placeholder="Write the level text with one space between words"
@@ -70,7 +106,20 @@ const CreateLevel: FC<Props> = ({}) => {
           <div className="upload-div flex around">
             <h2>Level Background</h2>
             <div className="upload-btn-div flex align-center">
-              <h3>Upload a file</h3>
+              <label className="flex center file-input" htmlFor="image-Input">
+                {" "}
+                <h3>Upload a file</h3>
+              </label>
+              <input
+                className="hidden"
+                type="file"
+                id="image-Input"
+                onChange={(e)=>{
+                  if(e.target.files)
+                  setFile(e.target.files[0])}}
+                name="image"
+                accept="image/*"
+              />
             </div>
           </div>
 
@@ -78,20 +127,20 @@ const CreateLevel: FC<Props> = ({}) => {
             <h2>Difficulty level</h2>
             <div className="difficulty-div flex between align-center">
               <h4
-                onClick={() => handleDifficultyClick("beginner")}
-                className={`${difficulty === "beginner" ? "active" : ""}`}
+                onClick={() => handleDifficultyClick("BEGINNER")}
+                className={`${difficulty === "BEGINNER" ? "active" : ""}`}
               >
                 Beginner
               </h4>
               <h4
-                onClick={() => handleDifficultyClick("intermediate")}
-                className={`${difficulty === "intermediate" ? "active" : ""}`}
+                onClick={() => handleDifficultyClick("INTERMEDIATE")}
+                className={`${difficulty === "INTERMEDIATE" ? "active" : ""}`}
               >
                 Intermediate
               </h4>
               <h4
-                onClick={() => handleDifficultyClick("advanced")}
-                className={`${difficulty === "advanced" ? "active" : ""}`}
+                onClick={() => handleDifficultyClick("ADVANCED")}
+                className={`${difficulty === "ADVANCED" ? "active" : ""}`}
               >
                 Advanced
               </h4>
