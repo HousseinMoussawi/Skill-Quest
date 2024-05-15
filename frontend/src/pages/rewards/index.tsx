@@ -1,27 +1,37 @@
-import React, { FC } from 'react'
-import './index.css'
-import SearchBar from '../../components/search-bar'
-import RewardCard from '../../components/reward-card'
+import React, { FC, useState } from "react";
+import "./index.css";
+import SearchBar from "../../components/search-bar";
+import RewardCard from "../../components/reward-card";
 
-type Props = {
+type Props = {};
 
-}
+const Rewards: FC<Props> = ({}) => {
+  const [clicked, setClicked] = useState<string>("");
 
-const Rewards:FC<Props> = ({}) => {
   return (
-    <div className='rewards flex center'>
-      <SearchBar firstFilter='Emojis' secondFilter='Themes' placeHolder='search for rewards' thirdFilter='Backgrounds'/>
-      <RewardCard/>
-      <RewardCard/>
-      <RewardCard/>
-      <RewardCard/>
-      <RewardCard/>
-      <RewardCard/>
-      <RewardCard/>
-      <RewardCard/>
-      <RewardCard/>
+    <div className="rewards flex center">
+      <SearchBar
+        firstFilter="Emojis"
+        secondFilter="Themes"
+        placeHolder="search for rewards"
+        thirdFilter="Backgrounds"
+        handleClickedAllFilter={() => setClicked("All")}
+        handleClickedFirstFilter={() => setClicked("Emojis")}
+        handleClickedSecondFilter={() => setClicked("Themes")}
+        handleClickedThirdFilter={() => setClicked("Backgrounds")}
+        isClicked={clicked}
+      />
+      <RewardCard />
+      <RewardCard />
+      <RewardCard />
+      <RewardCard />
+      <RewardCard />
+      <RewardCard />
+      <RewardCard />
+      <RewardCard />
+      <RewardCard />
     </div>
-  )
-}
+  );
+};
 
-export default Rewards
+export default Rewards;
