@@ -1,22 +1,49 @@
 const { Game } = require("../models/game.model");
 const { Level } = require("../models/level.model");
 const { ADVANCED } = require("../utils/LEVEL_DIFFICULTY_ENUM");
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads'); 
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname); 
+  }
+});
 
 const addLevelToGameById = async (req, res) => {
-  const { id } = req.params;
-
-  const { level } = req.body;
-
   try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).send("No game ID");
+    }
+
+    const { text, difficulty } = req.body;
+    if (!req.file) {
+      return res.status(400).json({ error: "Image file is required" });
+    }
+
+    const backgroundImageURL = `http://localhost:3001/uploads/${req.file.filename}`;
+
     const game = await Game.findById(id);
+    if(!game)
+      return res.status(400).send('no game')
 
-    const newLevel = await Level.create(level);
+    const newLevel = new Level({
+      text: JSON.parse(text),
+      difficulty,
+      backgroundImageURL,
+    });
 
-    game.push(newLevel);
+    await newLevel.save();
+
+    game.levels.push(newLevel);
 
     await game.save();
 
-    return res.status(200).send("Level created successfully!");
+    return res.status(200).send("Level created successfully!").json(game);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
@@ -94,4 +121,5 @@ module.exports = {
   getAllGameLevelsById,
   updateGameLevelById,
   deleteGameLevelById,
+  storage,
 };
