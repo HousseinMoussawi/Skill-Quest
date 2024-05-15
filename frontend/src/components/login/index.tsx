@@ -35,11 +35,12 @@ const Login: FC<Props> = ({ title, location }) => {
       );
       if (response.status == 200) {
         const data = response.data;
+        localStorage.setItem('user', JSON.stringify(data.user))
         localStorage.setItem("token", data.token);
         console.log(data);
         toast.success("Login successful");
-        if (data.user.role === "CREATOR") navigate("/create-game");
-        else navigate("/progress");
+        if (data.user.role === "CREATOR") navigate("/create");
+        else navigate("/games");
       } else {
         console.log(response.data);
       }
