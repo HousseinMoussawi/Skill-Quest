@@ -5,7 +5,7 @@ type Props = {}
 
 const Game:FC<Props> = ({}) => {
   return (
-    <div className='game flex column border align-center evenly'>
+    <div className='game flex column  align-center evenly'>
       <div className='game-image border'>
         <img src="http://localhost:3001/uploads/typinginvaders.png" alt="" />
       </div>
