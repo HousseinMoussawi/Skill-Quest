@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, MouseEventHandler } from "react";
 import "./index.css";
 
 type Props = {
@@ -6,30 +6,39 @@ type Props = {
   email: string;
   skills: string[];
   favorite: string;
+  handleEdit: MouseEventHandler<HTMLButtonElement>;
 };
 
-const ProfileInfo: FC<Props> = ({ email, favorite, fullname, skills }) => {
+const ProfileInfo: FC<Props> = ({
+  email,
+  favorite,
+  fullname,
+  skills,
+  handleEdit,
+}) => {
   return (
-    <div className="profile-info flex">
-      <div className="profile-info-titles flex column between">
-        <h3>Full name</h3>
-        <h3>Email</h3>
-        <h3>Skills targeted</h3>
-        <h3>Best game</h3>
-        <button>Edit</button>
-      </div>
-      <div className="profile-info-values flex column between">
-        <h3>{fullname}</h3>
-        <h3>{email}</h3>
-        <div className="profile-info-skills flex between">
-          {skills.map((string, index) => (
-            <h3 key={index}>{string}</h3>
-          ))}
+    <div className="profile-info flex column around align-center">
+      
+        <div>
+          <h3>Full name</h3> <h3>{fullname}</h3>
         </div>
-        <h3>{favorite}</h3>
-        <div className="empty-div"></div>
+        <div>
+          <h3>Email</h3>
+          <h3>{email}</h3>
+        </div>
+        <div>
+          <h3>Skills targeted</h3>
+          <div className="profile-info-skills flex between">
+            {skills.map((string, index) => (
+              <h3 key={index}>{string}</h3>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3>Best game</h3><h3>{favorite}</h3>
+        </div>
+        <button onClick={handleEdit}>Edit</button>
       </div>
-    </div>
   );
 };
 
