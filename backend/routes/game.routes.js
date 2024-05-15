@@ -1,6 +1,8 @@
 const express = require("express");
+const multer = require("multer");
 
 const {
+  
   createGame,
   deleteGameById,
   getAllGames,
@@ -8,29 +10,54 @@ const {
   getGameById,
 } = require("../controllers/game.controller");
 
-const {addLevelToGameById,
+const {
+  storage,
+  addLevelToGameById,
   getGameLevelById,
   getAllGameLevelsById,
   updateGameLevelById,
-  deleteGameLevelById,} = require('../controllers/level.controller')
+  deleteGameLevelById,
+} = require("../controllers/level.controller");
 
-  const adminMiddleware = require('../middlewares/admin.middleware')
-const authMiddleware = require('../middlewares/auth.middleware')
-const creatorMiddleware = require('../middlewares/creator.middleware')
+const adminMiddleware = require("../middlewares/admin.middleware");
+const authMiddleware = require("../middlewares/auth.middleware");
+const creatorMiddleware = require("../middlewares/creator.middleware");
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/',authMiddleware, creatorMiddleware,createGame)
-router.delete('/:id',authMiddleware,creatorMiddleware,deleteGameById)
-router.get('/',authMiddleware,getAllGames)
-router.put('/:id',authMiddleware,creatorMiddleware, updateGameById)
-router.get('/:id',authMiddleware,getGameById)
+const upload = multer({ storage: storage });
 
-router.post('/level/:id',authMiddleware,creatorMiddleware,addLevelToGameById)
-router.get('/level/:id',authMiddleware,getGameLevelById)
-router.get('/:id/levels',authMiddleware,creatorMiddleware,getAllGameLevelsById)
-router.put('/:gameId/level/:levelId',authMiddleware,adminMiddleware,updateGameLevelById)
-router.delete('/:gameId/level/:levelId',authMiddleware,adminMiddleware,deleteGameLevelById)
+router.post("/", authMiddleware, creatorMiddleware, createGame);
+router.delete("/:id", authMiddleware, creatorMiddleware, deleteGameById);
+router.get("/", authMiddleware, getAllGames);
+router.put("/:id", authMiddleware, creatorMiddleware, updateGameById);
+router.get("/:id", authMiddleware, getGameById);
 
+router.post(
+  "/level/:id",
+  authMiddleware,
+  upload.single('image'),
+  creatorMiddleware,
+  addLevelToGameById
+);
+router.get("/level/:id", authMiddleware, getGameLevelById);
+router.get(
+  "/:id/levels",
+  authMiddleware,
+  creatorMiddleware,
+  getAllGameLevelsById
+);
+router.put(
+  "/:gameId/level/:levelId",
+  authMiddleware,
+  adminMiddleware,
+  updateGameLevelById
+);
+router.delete(
+  "/:gameId/level/:levelId",
+  authMiddleware,
+  adminMiddleware,
+  deleteGameLevelById
+);
 
-module.exports = router
+module.exports = router;

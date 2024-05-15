@@ -47,15 +47,12 @@ const gameSchema = new mongoose.Schema(
 
     creator: {
       type: creatorSchema,
-      default: {
-        creator_id: 1,
-        creator_username: "Official",
-        creator_picture_url: "",
-      },
+      default: {},
     },
 
     levels: {
       type: [Level.levelSchema],
+      default:[],
     },
 
     stats: {
@@ -69,7 +66,9 @@ const gameSchema = new mongoose.Schema(
           type: String,
           enum: Object.values(DIFFICULTIES),
         },
+        
       ],
+      default:[],
     },
   },
   {

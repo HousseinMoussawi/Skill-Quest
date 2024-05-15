@@ -100,6 +100,7 @@ const userSchema = new mongoose.Schema(
         },
         message: "the full name '{VALUE}' is not a valid full name",
       },
+      default:'default name'
     },
 
     username: {
@@ -121,6 +122,7 @@ const userSchema = new mongoose.Schema(
 
     profilePictureURL: {
       type: String,
+      default:''
     },
 
     role: {
@@ -146,6 +148,7 @@ const userSchema = new mongoose.Schema(
 
     favoriteGame: {
       type: gameSchema,
+      default:{}
     },
 
     userGames: {
