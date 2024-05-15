@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import NavbarProfile from "../navbar-profile";
 import './index.css'
@@ -14,12 +14,24 @@ type Props = {
 
 
 const Navbar: FC<Props> = ({name,imageURL}) => {
+  const [user,setUser] = useState<any>(null);
+  const [role,setRole] = useState<string>('');
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem('user') as string));
+  },[]);
+
+  useEffect(()=>{
+    if (user) {
+      setRole(user.role);
+    }
+  },[user]);
 
   const handleLogoClick =() => {
-    navigate('/')
-  }
+    navigate('/');
+  };
 
   return (
     <div className="navbar flex between">
@@ -34,9 +46,9 @@ const Navbar: FC<Props> = ({name,imageURL}) => {
         <li>
           <NavLink to="/creators">Creators</NavLink>
         </li>
-        <li>
+        { role === 'CREATOR' && <li>
           <NavLink to="/create">Create</NavLink>
-        </li>
+        </li>}
         <li>
           <NavLink to="/rewards">Rewards</NavLink>
         </li>
