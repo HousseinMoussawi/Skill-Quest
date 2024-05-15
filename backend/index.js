@@ -20,6 +20,8 @@ app.use(express.json());
 
 app.use("/users", userRouter);
 
+app.use('/uploads', express.static(('uploads')));
+
 app.use("/auth", authRouter);
 
 app.use("/games", gameRouter);
