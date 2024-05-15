@@ -5,12 +5,9 @@ import Creators from "./pages/creators";
 import Admin from "./pages/admin";
 import Home from "./pages/home";
 import Auth from "./pages/auth";
-import CreateGame from "./pages/create-game";
-import CreatorAchievements from "./pages/creator-achievements";
-import CreatorProfile from "./pages/creator-profile";
 import Games from "./pages/games";
-import PlayerAchievements from "./pages/player-achievements";
-import PlayerProfile from "./pages/player-profile";
+import Achievements from "./pages/achievements";
+import Profile from "./pages/profile";
 import Progress from "./pages/progress";
 import Rewards from "./pages/rewards";
 import Game from "./pages/game";
@@ -20,7 +17,7 @@ import PlayerLogin from "./pages/auth/player-login";
 import PlayerSignup from "./pages/auth/player-signup";
 import Layout from "./pages/layout";
 import CreateLevel from "./pages/create-level";
-import Create from "./pages/create";
+
 import TypingGame from "./pages/typing-game";
 
 function App() {
@@ -52,24 +49,19 @@ function App() {
           <Route path="" element={<Layout isAuthorized={isAuthorized}/>}>
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="/creators" element={<Creators />}></Route>
-            <Route path="/create-game" element={<CreateGame />}></Route>
-            <Route
-              path="/creator-achievements"
-              element={<CreatorAchievements />}
-            ></Route>
-            <Route path="/creator-profile" element={<CreatorProfile />}></Route>
             <Route path="/game" element={<Game />}></Route>
-            <Route path="/games" element={<Games />}></Route>
+            <Route path="/games" element={<Games />}>
+              
+            </Route>
             <Route
               path="/achievements"
-              element={<PlayerAchievements />}
+              element={<Achievements />}
             ></Route>
             <Route path="/typing-game" element={<TypingGame/>}></Route>
-            <Route path="/profile" element={<PlayerProfile />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
             <Route path="/progress" element={<Progress />}></Route>
             <Route path="/rewards" element={<Rewards />}></Route>
-            <Route path="/create" element={<Create />}></Route>
-            <Route path="/create-level" element={<CreateLevel />}></Route>
+            <Route path="/create" element={<CreateLevel />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
