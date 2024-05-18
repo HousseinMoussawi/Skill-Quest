@@ -17,35 +17,29 @@
     width: 80%;
     float: right;
     height: 60px;
+    padding-left:15px;
+    padding-right:15px;
     font-size: 1.3rem;
 }
 
 .games-list li {
+    background-color: white;
+    color: var(--color-primary);
     height: 100%;
     display: flex;
     width: 25%;
     justify-content: center;
     align-items:center;
-}
-
-.games-list a{
-    color: var(--color-primary);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    background-color: var(--color-white);
-    width: 100%;
-    height: 100%;
-    border-radius: 15px 15px 0 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 15px 15px 0 0 ;
     text-align: center;
 }
 
-.games-list a.active{
+.games-list>li.active{
+    color: white;
     background-color: var(--color-primary);
-    color:white
 }
+
+
 
 .game-container{
     width: 100%;
@@ -56,11 +50,12 @@
     width: 80%;
     height: 100%;
     background-color: var(--color-primary);
-    border-radius: 0 0 15px 15px;
+    border-radius: 15px 15px 15px 15px;
     gap: 30px;
 }
 
 .levels-container{
+    padding-top: 30px;
     width: 100%;
     gap: 30px;
     overflow: hidden;
@@ -90,12 +85,12 @@
     justify-content: center;
 }
 
-.mode a.active{
+.mode li.active{
     background-color: var(--color-primary);
     color: white;
 }
 
-.mode a{
+.mode li{
     background-color: var(--color-third);
     color: white;
     width: 100%;
