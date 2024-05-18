@@ -5,15 +5,7 @@ const REWARD_TYPES = require("../utils/REWARD_TYPES_ENUM");
 const LEVEL_DIFFICULTY = require("../utils/LEVEL_DIFFICULTY_ENUM");
 const LEVEL_STATUS = require("../utils/LEVEL_STATUS_ENUM");
 
-const skillSchema = new mongoose.Schema({
-  name: String,
-});
 
-const levelStatSchema = new mongoose.Schema({
-  level_stat_id: mongoose.Schema.Types.ObjectId,
-  stat_name: String,
-  stat_value: String,
-});
 
 const gameLevelSchema = new mongoose.Schema({
   level_id: mongoose.Schema.Types.ObjectId,
@@ -31,30 +23,26 @@ const gameLevelSchema = new mongoose.Schema({
     default: LEVEL_STATUS.UNLOCKED,
   },
 
-  level_stats: {
-    type: [levelStatSchema],
-    default: [],
+  highscore: {
+    type: Number,
+    default: 0,
   },
 
-  level_text:{
-    type:[String],
-    default:[]
-  }
-});
+  score: {
+    type: Number,
+    default: 0,
+  },
 
-const gameStatSchema = new mongoose.Schema({
-  game_stat_id: mongoose.Schema.Types.ObjectId,
-  stat_name: String,
-  stat_value: String,
+  reward: {
+    type: Number,
+    default: 10,
+  },
 });
 
 const userGameSchema = new mongoose.Schema({
+  game_id: String,
   game_name: String,
 
-  game_stats: {
-    type: [gameStatSchema],
-    default: [],
-  },
   game_levels: {
     type: [gameLevelSchema],
     default: [],
@@ -69,7 +57,7 @@ const rewardSchema = new mongoose.Schema({
   reward_type: {
     type: String,
     enum: Object.values(REWARD_TYPES),
-    default:'',
+    default: "",
   },
 });
 
@@ -83,10 +71,6 @@ const achievementSchema = new mongoose.Schema({
   achievement_name: String,
   achievement_description: String,
   achievement_medal_url: String,
-
-  achievement_game: {
-    type: gameSchema,
-  },
 });
 
 const userSchema = new mongoose.Schema(
@@ -100,7 +84,7 @@ const userSchema = new mongoose.Schema(
         },
         message: "the full name '{VALUE}' is not a valid full name",
       },
-      default:'default name'
+      default: "default name",
     },
 
     username: {
@@ -122,7 +106,7 @@ const userSchema = new mongoose.Schema(
 
     profilePictureURL: {
       type: String,
-      default:''
+      default: "",
     },
 
     role: {
@@ -142,13 +126,13 @@ const userSchema = new mongoose.Schema(
     },
 
     skills: {
-      type: [skillSchema],
+      type: [String],
       default: [],
     },
 
     favoriteGame: {
       type: gameSchema,
-      default:{}
+      default: {},
     },
 
     userGames: {
@@ -165,7 +149,6 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
 
 const User = mongoose.model("User", userSchema);
 

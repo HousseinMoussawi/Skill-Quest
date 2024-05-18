@@ -6,12 +6,12 @@ const rewardSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-
+ 
     imageURL:{
         type: String,
         unique: true,
     },
-
+ 
     type:{
         type: String,
         enum :Object.values(REWARD_TYPES),
@@ -23,7 +23,7 @@ const rewardSchema = new mongoose.Schema({
         default:0,
     }
 })
-
+ 
 const Reward = mongoose.model('Reward',rewardSchema)
 
-module.exports = {Reward, rewardSchema}
+module.exports = {Reward, rewardSchema}   

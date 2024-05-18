@@ -2,12 +2,12 @@ const express = require("express");
 const multer = require("multer");
 
 const {
-  
   createGame,
   deleteGameById,
   getAllGames,
   updateGameById,
   getGameById,
+  addGameToPlayer,
 } = require("../controllers/game.controller");
 
 const {
@@ -27,16 +27,29 @@ const router = express.Router();
 
 const upload = multer({ storage: storage });
 
-router.post("/", authMiddleware, creatorMiddleware, createGame);
+router.post("/:gameId/user/:userId", authMiddleware, addGameToPlayer);
+router.post(
+  "/",
+  authMiddleware,
+  upload.array("image"),
+  creatorMiddleware,
+  createGame
+);
 router.delete("/:id", authMiddleware, creatorMiddleware, deleteGameById);
 router.get("/", authMiddleware, getAllGames);
-router.put("/:id", authMiddleware, creatorMiddleware, updateGameById);
+router.put(
+  "/:id",
+  authMiddleware,
+  upload.array("image"),
+  creatorMiddleware,
+  updateGameById
+);
 router.get("/:id", authMiddleware, getGameById);
 
 router.post(
   "/level/:id",
   authMiddleware,
-  upload.single('image'),
+  upload.single("image"),
   creatorMiddleware,
   addLevelToGameById
 );
