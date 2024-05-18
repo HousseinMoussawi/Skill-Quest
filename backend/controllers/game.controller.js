@@ -1,4 +1,5 @@
 const { Game } = require("../models/game.model");
+const { User } = require("../models/user.model");
 
 const createGame = async (req, res) => {
   const {
@@ -45,7 +46,7 @@ const getAllGames = async (req, res) => {
 
     return res.status(200).json(games);
   } catch (e) {
-    return res.status(500).send("Internal server error!:", e);
+    return res.status(500).send("Internal server error!:",e);
   }
 };
 
@@ -95,10 +96,49 @@ const getGameById = async (req, res) => {
   }
 };
 
+const addGameToPlayer = async (req, res) => {
+  const { gameId, userId } = req.params;
+  try {
+    const user = await User.findById(userId);
+    
+
+    if (!user) {
+      return res.status(400).send("User not found");
+    }
+
+    const game = await Game.findById(gameId);
+
+    if (!game) {
+      return res.status(400).send("Game not found");
+    }
+
+
+    const gameLevels = game.levels.map((level) => ({
+      level_id: level._id,
+      level_name: level.name,
+      level_difficulty: level.difficulty,
+      score: 0,
+      reward: 10,
+    }));
+
+    user.userGames.push({
+      game_name: game.name,
+      game_levels: gameLevels,
+    });
+
+    await user.save();
+
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).send("Internal Server Error!");
+  }
+};
+
 module.exports = {
   createGame,
   deleteGameById,
   getAllGames,
   updateGameById,
   getGameById,
+  addGameToPlayer,
 };
