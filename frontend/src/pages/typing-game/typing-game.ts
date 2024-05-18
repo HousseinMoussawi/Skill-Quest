@@ -125,7 +125,21 @@ class GameScene extends Phaser.Scene {
   constructor() {
     super("scene-game");
     this.words = [];
-    this.wordArray = ["apple", "banana", "cherry", "orange", "grape"];
+    this.wordArray = ["apple", "banana", "cherry", "orange", "grape","kiwi",
+    "mango",
+    "strawberry",
+    "blueberry",
+    "pineapple",
+    "watermelon",
+    "peach",
+    "pear",
+    "plum",
+    "lemon",
+    "lime",
+    "raspberry",
+    "blackberry",
+    "coconut",
+    "papaya"];
     this.timer = 60;
     this.playerLives = 3;
     this.hearts = [];
@@ -158,12 +172,7 @@ class GameScene extends Phaser.Scene {
         this.typedWord = "";
         this.attempts++;
         this.updateScore();
-
-        this.words.forEach((word) => {
-          if (!(this.typedWord === word.text.toLowerCase())) {
-            this.mistake++;
-          }
-        });
+        
       }
     });
 
@@ -257,13 +266,12 @@ class GameScene extends Phaser.Scene {
 
   wordReachedBottom(word: Phaser.GameObjects.Text) {
     word.destroy();
-
+    this.score -=10
+    this.updateScore()
     if (this.playerLives > 0) {
       this.playerLives--;
       this.hearts[this.playerLives].destroy();
-    } else {
-      this.endGame();
-    }
+    } 
   }
   update() {
     this.words.forEach((word) => {
@@ -296,27 +304,27 @@ class GameScene extends Phaser.Scene {
     if (this.gameStarted && !(this.playerLives === 0)) {
       this.timer--;
       this.timerText.setText(`Time: ${this.timer}s`);
-
-      if (this.timer <= 0) {
+    
+       if (this.timer <= 0) {
         this.timer = 0;
         this.loadWinScene();
       }
     }
-  }
-
-  updateScore() {
-    this.scoreText.setText(`Score: ${this.score}`);
-  }
-
-  endGame() {
-    if (this.playerLives === 0) {
-      this.loss = true;
-      this.loadLossScene();
+    else {
+      this.loadLossScene()
     }
   }
 
+  updateScore() {
+    this.scoreText.setText(`Score: ${Math.round(this.score)}`);
+  }
+
+  endGame() {
+      this.loss = true;
+      this.loadLossScene();
+  }
+
   loadWinScene() {
-    this.score -= this.mistake;
     this.scene.start("win-scene", { score: this.score });
   }
 

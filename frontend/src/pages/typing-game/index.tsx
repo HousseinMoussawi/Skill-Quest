@@ -16,7 +16,8 @@ const TypingGame = (props: Props) => {
   }, []);
 
   return (
-    <div className="typing-game flex justify-center ">
+    <div className="typing-game flex justify-center flex column align-center">
+      <h1>Typing Invaders</h1>
       <GameScreenCard />
     </div>
   );
