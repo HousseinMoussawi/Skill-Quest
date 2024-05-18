@@ -14,10 +14,9 @@ const createReward = async (req, res) => {
 
     return res.status(200).json(createdReward);
   } catch (e) {
-    return res.status(500).send("Internal server error!:", e);
+    return res.status(500).send(`Internal server error!: ${e}`);
   }
-};
-
+};  
 const getAllRewards = async (req, res) => {
   try {
     const rewards = await Reward.find();
@@ -26,8 +25,8 @@ const getAllRewards = async (req, res) => {
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
-};
-
+}; 
+  
 const getRewardById = async (req, res) => {
   const { id } = req.params;
 
@@ -39,6 +38,21 @@ const getRewardById = async (req, res) => {
     return res.status(500).send("Internal server error!:", e);
   }
 };
+
+const getUserRewardsById = async (req,res) => {
+  const {userId} = req.params
+
+  try {
+    const user = await User.findById(userId)
+
+    const rewards = user.userRewards
+
+    return res.status(200).json(rewards)
+    
+  } catch (e) {
+    return res.status(500).send(`Internal server error: ${e}`)
+  }
+}
 
 const updateRewardById = async (req, res) => {
   const { id } = req.params;
@@ -73,30 +87,43 @@ const deleteRewardById = async (req, res) => {
     return res.status(500).send("Internal server error!:", e);
   }
 };
-
+ 
 const buyRewardById = async (req, res) => {
   const { userId, rewardId } = req.params;
 
   try {
     const user = await User.findById(userId);
-
     const reward = await Reward.findById(rewardId);
 
-    if (user.balance > reward.price) {
-      user.userRewards.push({
-        reward_id: reward._id,
-        reward_image_url: reward.imageURL,
-        reward_name: reward.name,
-      });
+    if (!user) {
+      return res.status(404).send('User not found');
     }
 
+    if (!reward) {
+      return res.status(404).send('Reward not found');
+    }
+
+    if (user.balance < reward.price) {
+      return res.status(403).send('Not enough balance');
+    }
+
+    user.userRewards.push({
+      reward_id: reward._id,
+      reward_image_url: reward.imageURL,
+      reward_name: reward.name,
+      reward_type: reward.type,
+    });
+
+    user.balance -= reward.price;
     await user.save();
 
-    return res.status(200).send("Reward baught successfully!");
+    return res.status(200).send('Reward bought successfully!');
   } catch (e) {
-    return res.status(500).send("Internal server error!:", e);
+    console.error('Error buying reward:', e);
+    return res.status(500).send(`Internal server error: ${e.message}`);
   }
 };
+
 
 module.exports = {
   createReward,
@@ -105,4 +132,5 @@ module.exports = {
   updateRewardById,
   deleteRewardById,
   buyRewardById,
+  getUserRewardsById,
 };

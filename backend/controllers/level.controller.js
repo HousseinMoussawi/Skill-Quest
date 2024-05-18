@@ -30,7 +30,7 @@ const addLevelToGameById = async (req, res) => {
     const game = await Game.findById(id);
     if(!game)
       return res.status(400).send('no game')
-
+ 
     const newLevel = new Level({
       text: JSON.parse(text),
       difficulty,
@@ -43,7 +43,7 @@ const addLevelToGameById = async (req, res) => {
 
     await game.save();
 
-    return res.status(200).send("Level created successfully!").json(game);
+    return res.status(200).send("Level created successfully!")
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }

@@ -1,13 +1,8 @@
 const mongoose = require("mongoose");
 const Level = require("./level.model");
-const GameStat = require("./gameStat.model");
 const DIFFICULTIES = require("../utils/LEVEL_DIFFICULTY_ENUM");
 
-const creatorSchema = new mongoose.Schema({
-  creator_id: mongoose.Schema.Types.ObjectId,
-  creator_username: String,
-  creator_picture_url: String,
-});
+
 
 const skillSchema = new mongoose.Schema({
   name: String,
@@ -24,7 +19,7 @@ const gameSchema = new mongoose.Schema(
       type: String,
       require: "Game description is required",
     },
-
+ 
     gameImageURL: {
       type: String,
       default: "",
@@ -45,20 +40,11 @@ const gameSchema = new mongoose.Schema(
       default: [],
     },
 
-    creator: {
-      type: creatorSchema,
-      default: {},
-    },
-
     levels: {
       type: [Level.levelSchema],
       default:[],
     },
 
-    stats: {
-      type: [GameStat.gameStatSchema],
-      default: [],
-    },
 
     difficulties: {
       type: [

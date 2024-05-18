@@ -1,6 +1,5 @@
 const { User } = require("../models/user.model");
-const USER_ROLES  = require('../utils/USER_ROLES_ENUM')
-
+const USER_ROLES = require("../utils/USER_ROLES_ENUM");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -25,20 +24,26 @@ const getUserById = async (req, res) => {
 };
 
 const updateUserById = async (req, res) => {
-  const { id } = req.params;
+  
+  try {
+    const { id } = req.params;
 
-  const { email, fullName, favoriteGame, username, skills, profilePictureURL } =
+  const { email, fullName, username, skills } =
     req.body;
 
-  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "Image file is required" });
+    }
+
+    const profilePictureURL = `http://localhost:3001/uploads/${req.file.filename}`;
+
     const updatedUser = await User.findByIdAndUpdate(
       id,
       {
         email,
         fullName,
-        favoriteGame,
         username,
-        skills,
+        skills:JSON.parse(skills),
         profilePictureURL,
       },
       { new: true }
@@ -46,7 +51,7 @@ const updateUserById = async (req, res) => {
 
     return res.status(200).json(updatedUser);
   } catch (e) {
-    return res.status(500).send("Internal serve error!:", e);
+    return res.status(500).send(`Internal serve error!:${e}`);
   }
 };
 
@@ -119,9 +124,12 @@ const getAllUserGamesById = async (req, res) => {
 
     const games = user.userGames;
 
-    return res.stats(200).json(games);
+    if(!games)
+      return res.status(400).send('User has no games')
+
+    return res.status(200).json(games);
   } catch (e) {
-    return res.status(500).send("Internal server error!:", e);
+    return res.status(500).send(`Internal server error!: ${e}` );
   }
 };
 
@@ -169,28 +177,19 @@ const getCreatorGamesCountById = async (req, res) => {
 
 const getCreatorsWithGamesCount = async (req, res) => {
   try {
-    const creatorsWithGamesCount = await User.aggregate([
-      {
-        $match: { role: USER_ROLES.CREATOR },
-      },
-      {
-        $project: {
-          _id: 1,
-          username: 1,
-          gamesCount: { $size: "$userGames" },
-        },
-      },
-    ]);
+    const creators = await User.find({role:USER_ROLES.CREATOR})
 
-    return res.status(200).json(creatorsWithGamesCount);
+    console.log(creators)
+
+    return res.status(200).json(creators);
   } catch (e) {
-    return res.status(500).send("Internal server error!:", e);
+    return res.status(500).send("Internal server error!",e);
   }
 };
-
+  
 const getPlayerGamesProgressById = async (req, res) => {
   const { id } = req.params;
-
+ 
   try {
     const user = await User.findById(id);
 
@@ -202,11 +201,16 @@ const getPlayerGamesProgressById = async (req, res) => {
         difficulty: level.level_difficulty,
       })),
     }));
-
+ 
     return res.status(200).json(userGamesWithLevels);
   } catch (e) {
     return res.status(500).send("Internal server error!:", e);
   }
+}; 
+
+const authorize = async (req, res) => {
+  
+  return res.status(200).send('authorized')
 };
 
 module.exports = {
@@ -223,4 +227,5 @@ module.exports = {
   getCreatorGamesCountById,
   getCreatorsWithGamesCount,
   getPlayerGamesProgressById,
+  authorize,
 };
