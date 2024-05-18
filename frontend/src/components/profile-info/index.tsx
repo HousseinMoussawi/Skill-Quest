@@ -5,13 +5,11 @@ type Props = {
   fullname: string;
   email: string;
   skills: string[];
-  favorite: string;
   handleEdit: MouseEventHandler<HTMLButtonElement>;
 };
 
 const ProfileInfo: FC<Props> = ({
   email,
-  favorite,
   fullname,
   skills,
   handleEdit,
@@ -28,14 +26,13 @@ const ProfileInfo: FC<Props> = ({
         </div>
         <div>
           <h3>Skills targeted</h3>
-          <div className="profile-info-skills flex between">
+          <div className="profile-info-skills flex align-center">
             {skills.map((string, index) => (
               <h3 key={index}>{string}</h3>
             ))}
           </div>
         </div>
         <div>
-          <h3>Best game</h3><h3>{favorite}</h3>
         </div>
         <button onClick={handleEdit}>Edit</button>
       </div>
