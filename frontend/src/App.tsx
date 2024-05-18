@@ -17,16 +17,31 @@ import PlayerLogin from "./pages/auth/player-login";
 import PlayerSignup from "./pages/auth/player-signup";
 import Layout from "./pages/layout";
 import CreateLevel from "./pages/create-level";
-
+import { generateToken, messaging } from "./notifications/firebase";
 import TypingGame from "./pages/typing-game";
 import NewGame from "./pages/new-game";
+import { useEffect } from "react";
+import { onMessage } from "firebase/messaging";
+import toast ,{ Toaster } from "react-hot-toast";
+ 
 
 function App() {
+  useEffect(() => {
+    generateToken()
+    onMessage(messaging,(payload)=>{
+      console.log(payload)
+      if (payload.notification?.body) {
+        toast(payload.notification.body)
+      }
+    })
+  }, [])
+  
 
   const isAuthorized:boolean =!!localStorage.getItem('token')
 
   return (
     <div className="App">
+      <Toaster/>
       <BrowserRouter>
         <Routes>
           <Route path="/auth" element={<Auth />}>
