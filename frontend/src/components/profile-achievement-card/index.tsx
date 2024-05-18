@@ -2,13 +2,16 @@ import React, { FC } from 'react'
 import './index.css'
 import Image from '../../assets/login-image.png'
 
-type Props = {}
+type Props = {
+  achievementImageURL:string,
+  achievementDescription:string,
+}
 
-const ProfileAchievementsCard:FC<Props> = () => {
+const ProfileAchievementsCard:FC<Props> = ({achievementDescription,achievementImageURL}) => {
   return (
     <div className='profile-achievements-card flex align-center between'>
-        <img src={Image} alt="" />
-        <p>Hello how are you my most butter chicken man</p>
+        <img src={achievementImageURL} alt="" />
+        <p>{achievementDescription}</p>
     </div>
   )
 }
