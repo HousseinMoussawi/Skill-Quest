@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom'
 import Navbar from '../../components/navbar'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 import axios from 'axios'
+import Chatbot from '../../components/chatbot'
 
 
 type Props = {
@@ -55,10 +55,11 @@ const Layout: FC<Props> = ({isAuthorized}) => {
   },[user])
 
   return (
-    <div className='flex center column'>
+    <div className='flex center relative column'>
         <Navbar name={
           username} imageURL={userImageURL}/>
         <Outlet/>
+        <Chatbot/>
     </div>
   )
 }
