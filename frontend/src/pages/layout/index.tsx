@@ -4,6 +4,9 @@ import Navbar from '../../components/navbar'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import axios from 'axios'
+
+
 type Props = {
   isAuthorized:boolean,
 }
@@ -13,27 +16,48 @@ const Layout: FC<Props> = ({isAuthorized}) => {
   const [user,setUser] = useState<any>()
   const [username,setUsername] = useState<string>('')
   const [userImageURL,setUserImageURL] = useState<string>('')
+  const token = localStorage.getItem('token');
+
+  const authorize = async () => {
+    try {
+        const response = await axios.get('http://localhost:3001/users/authorize',{
+          headers:{
+            Authorization:`Bearer ${token}`,
+            "Content-Type":'application/json'
+          }
+        })
+          if(response.status === 200)
+            {
+              console.log('authorized')
+            }
+    } catch (error) {
+      localStorage.clear()
+      navigate('/auth')
+      console.log(error)
+    } 
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userr = localStorage.getItem('user')
-    setUser(JSON.parse(localStorage.getItem("user") as string))
-    console.log(user)
-    if ((!isAuthorized && !token ) ||  !userr) {
-      navigate('/auth');
-    }
+    authorize()
+    setUser(JSON.parse(localStorage.getItem("user") as string));
+    
   }, [isAuthorized, navigate]);
+
+
 
   useEffect(()=>{
 
-    if(user)
+    if(user){
       setUsername(user.username)
+      setUserImageURL(user.profilePictureURL)
+    }
+      
   },[user])
 
   return (
     <div className='flex center column'>
         <Navbar name={
-          username} imageURL="http://localhost:3001/uploads/images.jpg"/>
+          username} imageURL={userImageURL}/>
         <Outlet/>
     </div>
   )
