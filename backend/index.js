@@ -7,6 +7,7 @@ const gameRouter = require("./routes/game.routes");
 const rewardRouter = require("./routes/reward.routes");
 const achievementRouter = require('./routes/achievement.routes');
 const skillRouter = require('./routes/skill.routes');
+const AIrouter = require('./routes/AI.routes')
 
 require("dotenv").config();
 const app = express();
@@ -19,6 +20,8 @@ app.use(cors({
 app.use(express.json());
 
 app.use("/users", userRouter);
+
+app.use('/chatbot',AIrouter);
 
 app.use('/uploads', express.static(('uploads')));
 
