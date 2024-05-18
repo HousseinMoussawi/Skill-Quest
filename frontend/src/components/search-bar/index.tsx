@@ -19,9 +19,9 @@ const SearchBar: FC<Props> = ({firstFilter,secondFilter,thirdFilter,placeHolder,
     <div className='search-bar flex between align-center '>
         <div className='filters-div flex between'>
             <h4 className={`${isClicked==='All'?'active':''}`} onClick={handleClickedAllFilter}>All</h4>
-            <h4 className={`${isClicked ===firstFilter?'active':''}`} onClick={handleClickedFirstFilter}>{firstFilter}</h4>
-            <h4 className={`${isClicked===secondFilter?'active':''}`} onClick={handleClickedSecondFilter}>{secondFilter}</h4>
-            <h4 className={`${isClicked===thirdFilter?'active':''}`} onClick={handleClickedThirdFilter}>{thirdFilter}</h4>
+            <h4 className={`${isClicked ===firstFilter+'s'?'active':''}`} onClick={handleClickedFirstFilter}>{firstFilter}</h4>
+            <h4 className={`${isClicked===secondFilter+'s'?'active':''}`} onClick={handleClickedSecondFilter}>{secondFilter}</h4>
+            <h4 className={`${isClicked===thirdFilter+'s'?'active':''}`} onClick={handleClickedThirdFilter}>{thirdFilter}</h4>
             <h4></h4>
             <h4></h4>
         </div>
