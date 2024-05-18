@@ -3,36 +3,29 @@ import './index.css'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 type Props = {
-  status: string;
   levelName: string,
-  gameName: string,
-  levelId: string,
+  gameName:string,
 };
 
-const LevelCard: FC<Props> = ({ status, levelName, gameName, levelId }) => {
+const LevelCard: FC<Props> = ({ levelName,gameName}) => {
     const [error,setError] = useState<string>('')
     const navigate =useNavigate()
 
 const handleLevelClick = () => {
-    if (status === 'LOCKED'){
-        setError('Clear the previous levels')
-    }
+    if(gameName === 'Blocky Tower')
+      navigate('/NewGame')
     else{
-        navigate(`game/${gameName}/level/${levelId}`)
+      
+      navigate('/TypingInvaders')
     }
+   
 }
 
   return (
     <div className="level-card flex between align-center border">
       <h1>{levelName}</h1>
       <button onClick={handleLevelClick}>
-        {status === "UNLOCKED"
-          ? "Play"
-          : status === "LOCKED"
-          ? "Locked"
-          : status === "COMPLETE"
-          ? "Restart"
-          : ""}
+        Play
       </button>
     </div>
   );

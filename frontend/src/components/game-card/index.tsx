@@ -1,31 +1,31 @@
-import React, { FC } from 'react'
+import  { FC, MouseEventHandler } from 'react'
 import './index.css'
-import Image from '../../assets/istockphoto-1333010525-612x612.jpg'
 
-type Props = {}
+type Props = {
+  gameName: string,
+  imageURL: string,
+  skills: any[],
+  handleGameClick: MouseEventHandler<HTMLDivElement>
+}
 
-const GameCard: FC<Props> = () => {
+const GameCard: FC<Props> = ({ gameName, imageURL, skills,handleGameClick }) => {
   return (
-    <div className='game-card flex column between'>
-        <img src={Image} alt="" />
-        <div className='game-card-info flex column between align-center'>
-          <div className='game-name flex between align-center'>
-              <h1>Game Name</h1>
-              <h4></h4>
-          </div>
-          <div className='game-skills flex align-center between'>
-              <h4>Skills</h4>
-              <div className='skills-div flex between align-center'>
-                <h5>typing</h5>
-                <h5>english</h5>
-                <h5>coding</h5>
-              </div>
-          </div>
-          <div className='game-creator flex align-center between'>
-            <h4>Creator</h4>
-            <h4>John</h4>
+    <div className='game-card flex column between' onClick={handleGameClick}>
+      <img src={imageURL} alt="" />
+      <div className='game-card-info flex column between align-center'>
+        <div className='game-name flex between align-center'>
+          <h1>{gameName}</h1>
+          <h4></h4>
+        </div>
+        <div className='game-skills flex align-center between'>
+          <h4>Skills</h4>
+          <div className='skills-div flex between align-center'>
+            {skills.map((skill,index) => (
+              <h5 key={index}>{skill.name}</h5>
+            ))}
           </div>
         </div>
+      </div>
     </div>
   )
 }

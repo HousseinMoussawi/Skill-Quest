@@ -40,9 +40,9 @@ const Navbar: FC<Props> = ({name,imageURL}) => {
         <li>
           <NavLink to="/games">Games</NavLink>
         </li>
-        <li>
+        {role === 'PLAYER' && <li>
           <NavLink to="/progress">Progress</NavLink>
-        </li>
+        </li>}
         <li>
           <NavLink to="/creators">Creators</NavLink>
         </li>

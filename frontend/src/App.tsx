@@ -19,6 +19,7 @@ import Layout from "./pages/layout";
 import CreateLevel from "./pages/create-level";
 
 import TypingGame from "./pages/typing-game";
+import NewGame from "./pages/new-game";
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
           <Route path="" element={<Layout isAuthorized={isAuthorized}/>}>
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="/creators" element={<Creators />}></Route>
-            <Route path="/game" element={<Game />}></Route>
+            <Route path="/games/:id" element={<Game />}></Route>
             <Route path="/games" element={<Games />}>
               
             </Route>
@@ -57,7 +58,8 @@ function App() {
               path="/achievements"
               element={<Achievements />}
             ></Route>
-            <Route path="/typing-game" element={<TypingGame/>}></Route>
+            <Route path="/TypingInvaders" element={<TypingGame/>}></Route>
+            <Route path="/NewGame" element={<NewGame/>}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/progress" element={<Progress />}></Route>
             <Route path="/rewards" element={<Rewards />}></Route>
