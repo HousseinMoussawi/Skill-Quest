@@ -11,12 +11,15 @@ const Chatbot: FC<Props> = ({}) => {
   const token = localStorage.getItem('token')
 
   const handleFocus = () => {
-    setIsInputFocused(!isInputFocused);
+    setIsInputFocused(true);
   };
 
- 
+  const handleBlur = () => {
+    setIsInputFocused(false);
+  };
 
   const handleQuestion = async () => {
+    
     const prompt = question
     try {
       const response = await axios.post('http://localhost:3001/chatbot/',{prompt},
@@ -38,7 +41,7 @@ const Chatbot: FC<Props> = ({}) => {
   return (
     <div className="chatbot flex column align-center">
       {isInputFocused && (
-        <div className="answer-div ">
+        <div className="answer-div " onClick={handleBlur}>
           <p>{answer}</p>
         </div>
       )}
