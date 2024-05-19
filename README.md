@@ -13,35 +13,35 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 
 ### User Stories
 - As a user, I want to explore the available skills categories, so I can find areas of interest that align with my learning goals.
-- As a user, I want to track my progress and achievements, so I can see how far I've come and stay motivated to continue learning.
-- As a user, I want to receive personalized recommendations for new challenges and games based on my skill level and interests, so I can continuously expand my knowledge in diverse areas.
+- As a user, I want to play games, so I can have fun while learning new skills.
+- As a user, I want to receive notifications for new challenges, so I can continuously expand my knowledge with new levels.
 
 <br><br>
 <!-- Tech stack -->
 <img src="./readme/title3.svg"/>
 
-###  Coffee Express is built using the following technologies:
+###  Skill Quest is built using the following technologies:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+- This project uses the [React single page app development framework](https://react.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components.
+- For persistent storage (database), the app uses the [MongoDB](https://www.mongodb.com/) MongoDB is a source-available, cross-platform, document-oriented database program. Classified as a NoSQL database product.
+- To send local push notifications, the app uses the [FireBase Messaging](https://firebase.google.com/) which is a cross-platform cloud service for messages and notifications for Android, iOS, and web applications.
+- For the backend the app uses [Nodejs](https://nodejs.org/en) which is a cross-platform, open-source JavaScript runtime environment that can run on Windows, Linux, Unix, macOS, and more, with [Mongoose] which is a Node.js-specific MongoDB Object-Document Mapping (ODM) library.
+-the Project also uses [Phaser game development framework](https://phaser.io/)which is a 2D game framework used for making HTML5 games for desktop and mobile.
 
 <br><br>
 <!-- UI UX -->
 <img src="./readme/title4.svg"/>
 
 
-> We designed Coffee Express using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
+> We designed Skill Quest using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
-- Project Figma design [figma](https://www.figma.com/file/LsuOx5Wnh5YTGSEtrgvz4l/Purrfect-Pals?type=design&node-id=257%3A79&mode=design&t=adzbABt5hbb91ucZ-1)
+- Project Figma design [figma](https://www.figma.com/design/6DbHfBMAAVcMzNNbfYUO0s/Skill-Quest?node-id=0-1&t=w6fLH9MCO9gYk4Vi-0)
 
 
 ### Mockups
-| Home screen  | Menu Screen | Order Screen |
+| Login screen  | Games Screen | Profile Screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/Player%20login.png) | ![fsdaf](./readme/Flying%20MackBook%20Pro%20Mockup%20label.png) | ![fsdaf](./readme/Creator%20profile%20page.png) |
 
 <br><br>
 
@@ -50,8 +50,8 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 
 ###  Architecting Data Excellence: Innovative Database Design Strategies:
 
-- Insert ER Diagram here
-
+ 
+<img src="./readme/Untitled.png"/>
 
 <br><br>
 
@@ -60,19 +60,13 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 <img src="./readme/title6.svg"/>
 
 
-### User Screens (Mobile)
-| Login screen  | Register screen | Landing screen | Loading screen |
+### User Screens 
+| Login screen  | Register screen | Games screen | Progress screen |
 | ---| ---| ---| ---|
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen  | Menu Screen | Order Screen | Checkout Screen |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| ![Landing](./readme/Player%20login.png) | ![fsdaf](./readme/Student%20signup.png) | ![fsdaf](./readme/Flying%20MackBook%20Pro%20Mockup%20label.png) | ![fsdaf](./readme/Progress%20page.png) |
+| Profile screen  | Create Screen | Game Screen | Rewards Screen |
+| ![Landing](./readme/Creator%20profile%20page.png) | ![fsdaf](./readme/Creator%20create%20game%20info%20page.png) | ![fsdaf](./readme/Creator%20game%20design%20canvas.png) | ![fsdaf](./readme/Rewards%20redemption%20page.png) |
 
-### Admin Screens (Web)
-| Login screen  | Register screen |  Landing screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen  | Menu Screen | Order Screen |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 <br><br>
 
@@ -122,16 +116,25 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [example](https://example.com)
-2. Clone the repo
-   git clone [github](https://github.com/your_username_/Project-Name.git)
-3. Install NPM packages
+
+1. Clone the repo
+   git clone [github](https://github.com/HousseinMoussawi/Skill-Quest.git)
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. In the backend folder create a file   and call it:
+   ```js 
+   .env
    ```
+4. Add the following code to the .env file:
+   ```js
+   MONGODB_URI="mongodb://localhost:27017/Skill_Quest_db"
 
-Now, you should be able to run Coffee Express locally and explore its features.
+   PORT=3001
+
+   SECRET_KEY=MY_SECRET_KEY
+
+   OPENAI_API_KEY=sk-proj-xsubwmvi8OI9OMOc0X0DT3BlbkFJLuajODlwe8qXGgn0dwON
+   ```
+Now, you should be able to run Skill Quest locally and explore its features.
