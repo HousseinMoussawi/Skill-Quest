@@ -1,0 +1,27 @@
+.profile-reward-card{
+    width: 100px;
+    height: 70px;
+    border-radius: 10px;
+    background-color: #35689D07;
+}
+
+.profile-reward-card img{
+    width: 100%;
+    height: 60%;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-reward-card-info{
+    width: 100%;
+    height: 40%;
+    padding: 10px;
+}
+
+.profile-reward-card-info>div{
+    width: 100%;
+}
+
+
+
+
+

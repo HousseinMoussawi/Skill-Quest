@@ -1,0 +1,7 @@
+const LEVEL_STATUS = {
+    COMPLETE: "COMPLETE",
+    UNLOCKED: "UNLOCKED",
+    LOCKED: "LOCKED",
+}
+
+module.exports = LEVEL_STATUS

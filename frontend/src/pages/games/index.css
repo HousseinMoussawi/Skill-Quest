@@ -1,0 +1,15 @@
+.games{
+    width: 90%;
+    max-width: 1340px;
+    height: 90vh;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.games-container{
+    width: 100%;
+    height:fit-content;
+    min-height: 80vh;
+    gap: 40px;
+    flex-wrap: wrap;
+}

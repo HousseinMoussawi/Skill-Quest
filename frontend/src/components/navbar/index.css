@@ -1,0 +1,43 @@
+.navbar{
+    width: 90%;
+    height: 80px;
+    max-width: 1340px;
+}
+
+.navbar-list{
+    height: 100%;
+    width: 60%;
+    max-width:600px;
+}
+
+.navbar-list li{
+    list-style-type: none;
+    height: 60%;
+}
+
+.navbar-list li a{
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+}
+
+.navbar-list .active{
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.navbar-list li a:visited{
+    color: black;
+}
+
+.nav-without-logo{
+    width: 70%;
+}
+
+.logo{
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+}

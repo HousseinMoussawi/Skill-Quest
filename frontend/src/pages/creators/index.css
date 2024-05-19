@@ -1,0 +1,7 @@
+.creators{
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 90%;
+    max-width: 1340px;
+    height: 90vh;
+}

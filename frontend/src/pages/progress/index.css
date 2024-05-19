@@ -1,0 +1,129 @@
+.whole-screen{
+    width: 100%;
+    height: 90vh;
+    min-height: 800px;
+    border-radius:50px;
+}
+
+.progress-div{
+    width: 90%;
+    height: 90%;
+    border-radius: 20px;
+    background-color: #6f9bc520 ;
+    padding: 10px;
+}
+
+.games-list{
+    width: 80%;
+    float: right;
+    height: 60px;
+    padding-left:15px;
+    padding-right:15px;
+    font-size: 1.3rem;
+}
+
+.games-list li {
+    background-color: white;
+    color: var(--color-primary);
+    height: 100%;
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    align-items:center;
+    border-radius: 15px 15px 0 0 ;
+    text-align: center;
+}
+
+.games-list>li.active{
+    color: white;
+    background-color: var(--color-primary);
+}
+
+
+
+.game-container{
+    width: 100%;
+    height: 90%;
+}
+
+.levels-div{
+    width: 80%;
+    height: 100%;
+    background-color: var(--color-primary);
+    border-radius: 15px 15px 15px 15px;
+    gap: 30px;
+}
+
+.levels-container{
+    padding-top: 30px;
+    width: 100%;
+    gap: 30px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.levels-container::-webkit-scrollbar{
+    display: none;
+}
+
+.mode{
+    width: 20%;
+    height: 100%;
+    font-size: 1.3rem;
+}
+
+
+.mode ul{
+    width: 100%;
+    height: fit-content;
+}
+
+.mode ul li{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.mode li.active{
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.mode li{
+    background-color: var(--color-third);
+    color: white;
+    width: 100%;
+    height: 100%;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px 0 0 30px;
+    text-align: center;
+    min-width: 150px;
+}
+
+.stats-div{
+    margin-top: 50px;
+    width: 90%;
+    height: 70px;
+    border-radius: 35px;
+    color: white;
+}
+
+.stats-div div{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    z-index: 1;
+    background-color: var(--color-primary);
+}
+
+.stats-div h4{
+    margin-left: 10px;
+}
+
+.stats-div.border, .stats-div .border{
+    border: 1px solid var(--color-third);
+}

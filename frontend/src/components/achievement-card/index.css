@@ -1,0 +1,17 @@
+.achievement-card{
+    width: 150px;
+    height: 150px;
+    background-color: #35689D30;
+    border-radius: 10px;
+    border-radius: 75px;
+}
+
+.achievement-card img{
+    width: 150px;
+    height: 150px;
+    border-radius: inherit;
+}
+
+.tooltip{
+    background-color: var(--color-primary);
+}
