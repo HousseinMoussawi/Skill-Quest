@@ -39,9 +39,9 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 
 
 ### Mockups
-| Login screen  | Games Screen | Profile Screen |
+| Progress screen  | Games Screen | Profile Screen |
 | ---| ---| ---|
-| ![Landing](./readme/Player%20login.png) | ![fsdaf](./readme/Flying%20MackBook%20Pro%20Mockup%20label.png) | ![fsdaf](./readme/Creator%20profile%20page.png) |
+| ![Landing](./readme/Progress%20page.png) | ![fsdaf](./readme/Flying%20MackBook%20Pro%20Mockup%20label.png) | ![fsdaf](./readme/Creator%20profile%20page.png) |
 
 <br><br>
 
@@ -63,7 +63,7 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 ### User Screens 
 | Login screen  | Register screen | Games screen | Progress screen |
 | ---| ---| ---| ---|
-| ![Landing](./readme/Player%20login.png) | ![fsdaf](./readme/Student%20signup.png) | ![fsdaf](./readme/Flying%20MackBook%20Pro%20Mockup%20label.png) | ![fsdaf](./readme/Progress%20page.png) |
+| ![Landing](./readme/Untitled%20design.mp4) | ![fsdaf](./readme/Untitled%20design%20(1).mp4) | ![fsdaf](./readme/Flying%20MackBook%20Pro%20Mockup%20label.png) | ![fsdaf](./readme/Progress%20page.png) |
 | Profile screen  | Create Screen | Game Screen | Rewards Screen |
 | ![Landing](./readme/Creator%20profile%20page.png) | ![fsdaf](./readme/Creator%20create%20game%20info%20page.png) | ![fsdaf](./readme/Creator%20game%20design%20canvas.png) | ![fsdaf](./readme/Rewards%20redemption%20page.png) |
 
@@ -74,18 +74,107 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 <!-- Prompt Engineering -->
 <img src="./readme/title7.svg"/>
 
-###  Mastering AI Interaction: Unveiling the Power of Prompt Engineering:
+###  Perfecting AI Interaction: Revealing the Potential of Prompt Crafting:
 
-- This project uses advanced prompt engineering techniques to optimize the interaction with natural language processing models. By skillfully crafting input instructions, we tailor the behavior of the models to achieve precise and efficient language understanding and generation for various tasks and preferences.
+- This project employs sophisticated prompt engineering methodologies to enhance interactions with natural language processing models. Through adept crafting of input instructions, we customize the models' behavior to achieve accurate and effective language comprehension and generation, catering to diverse tasks and preferences.
 
 <br><br>
 
 <!-- AWS Deployment -->
 <img src="./readme/title8.svg"/>
 
-###  Efficient AI Deployment: Unleashing the Potential with AWS Integration:
+###  Optimized Deployment: Harnessing the Power of AWS Integration:
 
-- This project leverages AWS deployment strategies to seamlessly integrate and deploy natural language processing models. With a focus on scalability, reliability, and performance, we ensure that AI applications powered by these models deliver robust and responsive solutions for diverse use cases.
+- This project utilizes AWS deployment strategies to integrate and deploy natural language processing models effortlessly. Emphasizing scalability, reliability, and performance, we ensure that AI applications driven by these models provide robust and responsive solutions for various use cases.
+
+### How reverse proxy was configured:
+
+- #### Fetch the cloudflared package by downloading it from the latest release:
+```bash
+wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+```
+
+- #### Proceed to install the package:
+```bash
+sudo dpkg -i cloudflared-linux-amd64.deb
+```
+
+- #### Authenticate cloudflared using your logged-in Cloudflare account associated with your domain:
+```bash
+cloudflared login
+```
+
+- #### Create a tunnel with a specified name:
+```bash
+cloudflared tunnel create skillquest
+```
+
+- #### Copy the ID of the tunnel from the output.
+
+- #### Navigate to the cloudflared configuration directory:
+```bash
+cd ~/.cloudflared
+```
+
+- #### Configure a CNAME DNS record on the Cloudflare website, pointing it to your tunnel ID.
+
+- #### Open the configuration file for editing:
+```bash
+nano config.yml
+```
+
+- #### Inside the editor, input the tunnel ID and specify the path to the credentials file:
+```yaml
+tunnel: tunnel-id-copied
+credentials-file: /home/ubuntu/.cloudflared/tunnel-id-copied.json
+
+ingress:
+  - hostname: https://skillquest.book-hub.org/
+    service: http://localhost:3001
+  - service: http_status:404
+```
+
+- #### Start the cloudflared tunnel:
+```bash
+cloudflared tunnel run skillquest
+```
+
+- #### Install and configure the cloudflared service:
+```bash
+sudo nano /etc/systemd/system/cloudflared.service
+```
+
+- #### Within the editor, add the following service configuration:
+```ini
+[Unit]
+Description=Cloudflare reverse proxy
+After=network.target
+
+[Service]
+TimeoutStartSec=0
+Type=notify
+ExecStart=/usr/local/bin/cloudflared tunnel run skillquest
+Restart=always
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- #### Reload systemd services:
+```bash
+sudo systemctl daemon-reload
+```
+
+- #### Start the cloudflared service:
+```bash
+sudo systemctl start cloudflared
+```
+
+- #### Enable automatic service restart on boot:
+```bash
+sudo systemctl enable cloudflared
+```
 
 <br><br>
 
