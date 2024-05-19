@@ -61,11 +61,11 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 
 
 ### User Screens 
-| Login screen  | Register screen | Games screen | Progress screen |
+| Login screen  | Games screen | Game screen | Progress screen |
 | ---| ---| ---| ---|
-| ![Landing](./readme/Untitled%20design.mp4) | ![fsdaf](./readme/Untitled%20design%20(1).mp4) | ![fsdaf](./readme/Flying%20MackBook%20Pro%20Mockup%20label.png) | ![fsdaf](./readme/Progress%20page.png) |
-| Profile screen  | Create Screen | Game Screen | Rewards Screen |
-| ![Landing](./readme/Creator%20profile%20page.png) | ![fsdaf](./readme/Creator%20create%20game%20info%20page.png) | ![fsdaf](./readme/Creator%20game%20design%20canvas.png) | ![fsdaf](./readme/Rewards%20redemption%20page.png) |
+| ![login](./readme/Untitleddesign-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign1-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign2-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign3-ezgif.com-video-to-gif-converter.gif) |
+| Gameplay screen   | AI Screen | Rewards Screen |
+| ![Landing](./readme/Untitleddesign4-ezgif.com-video-to-gif-converter.gif)  | ![fsdaf](./readme/Untitleddesign6-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign5-ezgif.com-video-to-gif-converter.gif) |
 
 
 <br><br>
