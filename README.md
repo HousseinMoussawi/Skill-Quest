@@ -61,11 +61,16 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 
 
 ### User Screens 
-| Login screen  | Games screen | Game screen | Progress screen |
-| ---| ---| ---| ---|
-| ![login](./readme/Untitleddesign-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign1-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign2-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign3-ezgif.com-video-to-gif-converter.gif) |
-| Gameplay screen   | AI Screen | Rewards Screen |
-| ![Landing](./readme/Untitleddesign4-ezgif.com-video-to-gif-converter.gif)  | ![fsdaf](./readme/Untitleddesign6-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign5-ezgif.com-video-to-gif-converter.gif) |
+| Login screen  | Games screen |
+| --- | --- |
+| ![login](./readme/Untitleddesign-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign1-ezgif.com-video-to-gif-converter.gif) |
+| Game screen | Progress screen |
+| ![fsdaf](./readme/Untitleddesign2-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign3-ezgif.com-video-to-gif-converter.gif) |
+| Gameplay screen | AI Screen |
+| ![Landing](./readme/Untitleddesign4-ezgif.com-video-to-gif-converter.gif) | ![fsdaf](./readme/Untitleddesign6-ezgif.com-video-to-gif-converter.gif) |
+| Rewards Screen |  |
+| ![fsdaf](./readme/Untitleddesign5-ezgif.com-video-to-gif-converter.gif) |  |
+
 
 
 <br><br>
@@ -77,6 +82,8 @@ SkillQuest provides a fun and immersive environment to achieve your learning goa
 ###  Perfecting AI Interaction: Revealing the Potential of Prompt Crafting:
 
 - This project employs sophisticated prompt engineering methodologies to enhance interactions with natural language processing models. Through adept crafting of input instructions, we customize the models' behavior to achieve accurate and effective language comprehension and generation, catering to diverse tasks and preferences.
+
+<img src='./readme/Screenshot 2024-05-20 130028.png' />
 
 <br><br>
 
